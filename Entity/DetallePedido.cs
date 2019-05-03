@@ -8,8 +8,6 @@ using System.ComponentModel.DataAnnotations;
 namespace Entity
 {
     public class DetallePedido {
-
-
         public Pedido Pedido { get; set; }
         public Producto Producto { get; set; }
         public double Precio { get; set; }

@@ -32,8 +32,8 @@ namespace Entity
 
     public double PrecioEnvio { get; set; }
 
-    public double Descuento{get;set;)
+    public double Descuento { get; set; }
 
-    public List<DetallePedido> Detalles;
+    public List<DetallePedido> DetallesPedidos { get; set; }
     }
 }

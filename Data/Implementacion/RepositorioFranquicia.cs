@@ -59,7 +59,7 @@ namespace Data.Implementacion
                             franquicia.Sedes = repositorioSede.GetByFranquicia(franquicia.IdFranquicia);
 
                             IRepositorioProductoFranquicia repositorioProductoFranquicia = new RepositorioProductoFranquicia();
-                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.GetByFranquicia(franquicia.IdFranquicia);
+                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.FindByFranquicia(franquicia.IdFranquicia);
 
                             franquicias.Add(franquicia);
                         }
@@ -99,7 +99,7 @@ namespace Data.Implementacion
                             franquicia.Sedes = repositorioSede.GetByFranquicia(franquicia.IdFranquicia);
 
                             IRepositorioProductoFranquicia repositorioProductoFranquicia = new RepositorioProductoFranquicia();
-                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.GetByFranquicia(franquicia.IdFranquicia);
+                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.FindByFranquicia(franquicia.IdFranquicia);
 
                         }
                     }

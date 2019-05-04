@@ -60,12 +60,13 @@ namespace Data.Implementacion
                             producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
                             producto.Unidad = dr["UnidadProducto"].ToString();
                             producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+                            producto.Imagen = dr["ImagenProducto"].ToString();
 
-                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
-                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+                            categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            categoria.Nombre = dr["NombreCategoria"].ToString();
 
-                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
-                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+                            marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            marca.Nombre = dr["NombreMarca"].ToString();
 
                             producto.Marca = marca;
                             producto.Categoria = categoria;
@@ -107,12 +108,13 @@ namespace Data.Implementacion
                             producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
                             producto.Unidad = dr["UnidadProducto"].ToString();
                             producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+                            producto.Imagen = dr["ImagenProducto"].ToString();
 
-                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
-                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+                            categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            categoria.Nombre = dr["NombreCategoria"].ToString();
 
-                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
-                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+                            marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            marca.Nombre = dr["NombreMarca"].ToString();
 
                             producto.Marca = marca;
                             producto.Categoria = categoria;
@@ -219,6 +221,7 @@ namespace Data.Implementacion
                             producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
                             producto.Unidad = dr["UnidadProducto"].ToString();
                             producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+                            producto.Imagen = dr["ImagenProducto"].ToString();
 
                             categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
                             categoria.Nombre = dr["NombreCategoria"].ToString();
@@ -265,12 +268,13 @@ namespace Data.Implementacion
                             producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
                             producto.Unidad = dr["UnidadProducto"].ToString();
                             producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+                            producto.Imagen = dr["ImagenProducto"].ToString();
 
-                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
-                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+                            categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            categoria.Nombre = dr["NombreCategoria"].ToString();
 
-                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
-                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+                            marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            marca.Nombre = dr["NombreMarca"].ToString();
 
                             producto.Marca = marca;
                             producto.Categoria = categoria;

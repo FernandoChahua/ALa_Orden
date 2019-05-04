@@ -105,7 +105,7 @@ namespace Data.Implementacion
                             franquicia.Sedes = repositorioSede.GetByFranquicia(franquicia.IdFranquicia);
 
                             IRepositorioProductoFranquicia repositorioProductoFranquicia = new RepositorioProductoFranquicia();
-                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.GetByFranquicia(franquicia.IdFranquicia);
+                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.FindByFranquicia(franquicia.IdFranquicia);
 
                             productoFranquicia.CodRef = dr["codReferencia"].ToString();
                             productoFranquicia.Producto = producto;
@@ -236,7 +236,7 @@ namespace Data.Implementacion
                             franquicia.Sedes = repositorioSede.GetByFranquicia(franquicia.IdFranquicia);
 
                             IRepositorioProductoFranquicia repositorioProductoFranquicia = new RepositorioProductoFranquicia();
-                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.GetByFranquicia(franquicia.IdFranquicia);
+                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.FindByFranquicia(franquicia.IdFranquicia);
 
                             productoFranquicia.CodRef = dr["codReferencia"].ToString();
                             productoFranquicia.Producto = producto;

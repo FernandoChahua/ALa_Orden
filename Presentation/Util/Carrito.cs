@@ -8,7 +8,12 @@ namespace Presentation.Util
 {
     public class Carrito
     {
-        public List<DetallePedido> DetallePedidos { get; set; }
+        public List<DetallePedido> DetallePedidos;
+
+        public Carrito()
+        {
+            DetallePedidos = new List<DetallePedido>();
+        }
 
 
         public void AumentarCantidad(DetallePedido dp)
@@ -50,10 +55,7 @@ namespace Presentation.Util
 
         public void AgregarDetalle(DetallePedido dp)
         {
-            if (!Existe(dp))
-            {
                 DetallePedidos.Add(dp);
-            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Alo.Controllers
     {
         // GET: Tarjeta
         private IServicioTarjeta servicioTarjeta = new ServicioTarjeta();
-        private IServicioUsuario servicioCliente = new ServicioUsuario();
+        private IServicioUsuario servicioUsuario = new ServicioUsuario();
 
 
         public ActionResult Index(int cl = 0)
@@ -32,7 +32,7 @@ namespace Alo.Controllers
         public ActionResult Create()
         {
             //ViewBag.cliente = cliente;
-            ViewBag.clientes = servicioCliente.GetAll();
+            ViewBag.usuarios = servicioUsuario.GetAll();
             return View();
         }
 
@@ -40,7 +40,7 @@ namespace Alo.Controllers
 
         public ActionResult Create(Usuario usuario, Tarjeta Tarjeta)
         {
-            ViewBag.clientes = servicioCliente.GetAll();
+            ViewBag.usuarios = servicioUsuario.GetAll();
             bool rptaInsert = servicioTarjeta.Insert(Tarjeta);
 
             if (rptaInsert)
@@ -67,7 +67,7 @@ namespace Alo.Controllers
 
         public ActionResult Edit(int id)
         {
-            ViewBag.clientes = servicioCliente.GetAll();
+            ViewBag.usuarios = servicioUsuario.GetAll();
 
             Tarjeta tarjeta = servicioTarjeta.FindById(id);
             ViewBag.tarjeta = servicioTarjeta.GetAll();
@@ -78,7 +78,7 @@ namespace Alo.Controllers
 
         public ActionResult Edit(Tarjeta Tarjeta)
         {
-            ViewBag.clientes = servicioCliente.GetAll();
+            ViewBag.usuarios = servicioUsuario.GetAll();
             ViewBag.tarjeta = servicioTarjeta.GetAll();
 
             bool rptaEdit = servicioTarjeta.Update(Tarjeta);

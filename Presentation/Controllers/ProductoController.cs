@@ -13,6 +13,8 @@ namespace ALaOrden.Controllers
     public class ProductoController : Controller
     {
         private IServicioProducto servicioProducto = new ServicioProducto();
+        private IServicioCategoria servicioCategoria = new ServicioCategoria();
+        private IServicioMarca servicioMarca = new ServicioMarca();
         // GET: Producto
         public ActionResult Index()
         {
@@ -29,6 +31,8 @@ namespace ALaOrden.Controllers
         public ActionResult Create(Producto producto)
         {
             ViewBag.producto = servicioProducto.GetAll();
+            ViewBag.categorias = servicioCategoria.GetAll();
+            ViewBag.marcas = servicioMarca.GetAll();
             bool rptaInsert = servicioProducto.Insert(producto);
             if (rptaInsert)
             {
@@ -57,6 +61,9 @@ namespace ALaOrden.Controllers
                 return HttpNotFound();
             }
             Producto producto = servicioProducto.FindById(id);
+            ViewBag.categorias = servicioCategoria.GetAll();
+            ViewBag.marcas = servicioMarca.GetAll();
+
             return View(producto);
         }
 

@@ -12,7 +12,7 @@ namespace AlaOrden.Controllers
     public class PedidoController : Controller
     {
         IServicioPedido servicioPedido = new ServicioPedido();
-        IServicioUsuario servicioCliente = new ServicioUsuario();
+        IServicioUsuario servicioUsuario = new ServicioUsuario();
         IServicioSede servicioSede = new ServicioSede();
         // GET: Pedido
         public ActionResult Index(int cl = 0)
@@ -45,7 +45,7 @@ namespace AlaOrden.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.clientes = servicioCliente.GetAll();
+            ViewBag.usuarios = servicioUsuario.GetAll();
             ViewBag.sedes = servicioSede.GetAll();
             return View();
         }
@@ -60,7 +60,7 @@ namespace AlaOrden.Controllers
         }
         public ActionResult Edit(int p)
         {
-            ViewBag.clientes = servicioCliente.GetAll();
+            ViewBag.usuarios = servicioUsuario.GetAll();
             ViewBag.sedes = servicioSede.GetAll();
             return View(servicioPedido.FindById(p));
         }

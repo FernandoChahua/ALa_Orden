@@ -8,7 +8,7 @@ namespace Presentation.Util
 {
     public class Carrito
     {
-        public List<DetallePedido> DetallePedidos;
+        public List<DetallePedido> DetallePedidos ;
 
         public Carrito()
         {

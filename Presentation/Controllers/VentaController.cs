@@ -26,7 +26,7 @@ namespace Presentation.Controllers
         {
             DetallePedido dp = new DetallePedido();
             dp.Producto = servicioProducto.FindById(id);
-            dp.Cantidad = 0;
+            dp.Cantidad = 1;
             carrito.AgregarDetalle(dp);
 
             return RedirectToAction("Index");

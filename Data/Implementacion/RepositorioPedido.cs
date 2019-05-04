@@ -120,7 +120,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idUsuario,c.usuario,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Usuario c,Sede s , Franquicia f where p.idUsuario = c.idUsuario and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia", conexion);
+                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idUsuario,c.apodo,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Usuario c,Sede s , Franquicia f where p.idUsuario = c.idUsuario and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia", conexion);
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
@@ -184,7 +184,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idUsuario,c.usuario,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Usuario c,Sede s , Franquicia f where p.idUsuario = c.idUsuario and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia and p.idPedido = " + id, conexion);
+                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idUsuario,c.apodo,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Usuario c,Sede s , Franquicia f where p.idUsuario = c.idUsuario and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia and p.idPedido = " + id, conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
@@ -245,7 +245,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idUsuario,c.usuario,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Usuario c,Sede s , Franquicia f where p.idUsuario = c.idUsuario and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia and p.idUsuario = " + idUsuario, conexion);
+                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idUsuario,c.apodo,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Usuario c,Sede s , Franquicia f where p.idUsuario = c.idUsuario and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia and p.idUsuario = " + idUsuario, conexion);
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())

@@ -14,10 +14,13 @@
 
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cliente)
+            @Html.DisplayNameFor(model => model.Usuario)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Sede)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Direccion)
@@ -43,40 +46,43 @@
 
     @foreach (Entity.Pedido item in Model)
     {
-        @Html.HiddenFor(movel => item.DetallePedidos)
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente.Usuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sede.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NroTransaccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubTotal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrecioEnvio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descuento)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { dp = item.IdPedido })
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { p = item.IdPedido }) | 
-                @Html.ActionLink("Delete", "Delete", new { p = item.IdPedido })
-            </td>
-        </tr>
+        @Html.HiddenFor(movel => item.DetallesPedidos)
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Apodo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sede.Franquicia.Nombre)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NroTransaccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioEnvio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descuento)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { dp = item.IdPedido })
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { p = item.IdPedido }) |
+            @Html.ActionLink("Delete", "Delete", new { p = item.IdPedido })
+        </td>
+    </tr>
     }
 </table>
 

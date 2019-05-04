@@ -9,7 +9,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Nuevo Pedido", "Create")
+    @Html.ActionLink("Nuevo Indice", "Create")
 </p>
 
 <table class="table">
@@ -21,23 +21,29 @@
         <th>
             @Html.DisplayNameFor(model => model.Producto)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodRef)
+        </th>
 
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Franquicia.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto.Nombre)
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { p = item.Producto.IdProducto, pr = item.Franquicia.IdFranquicia })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Franquicia.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodRef)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { p = item.Producto.IdProducto, pr = item.Franquicia.IdFranquicia })
+        </td>
+    </tr>
     }
 </table>
 

@@ -67,51 +67,32 @@ namespace Data.Implementacion
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
                 {
                     conexion.Open();
-                    var query = new SqlCommand("select p.idProducto,p.nombre as NombreProducto,p.presentacion as PresentacionProducto,p.cantidad as CantidadProducto,p.Magnitud as MagnitudProducto,p.unidad as UnidadProducto,p.descripcion as DescripcionProducto,p.imagen as ImagenProducto,c.idCategoria, c.nombre as NombreCategoria,m.idMarca,m.nombre as NombreMarca, f.idFranquicia, f.nombre as NombreFranquicia,f.url as UrlFranquicia,f.logo as LogoFranquicia,pf.codReferencia from Producto p, Marca m, Categoria c, Franquicia f,Producto_Franquicia pf where p.idMarca = m.idMarca and p.idCategoria = c.idCategoria and pf.idProducto = p.idProducto and pf.idFranquicia = f.idFranquicia", conexion);
-                    using (var dr = query.ExecuteReader())
+                    var query = @"SELECT 
+                                    p_f.*, 
+                                    p.nombre as nomProducto,
+                                    f.nombre as nomFranquicia
+                                FROM Producto_Franquicia p_f
+                                JOIN Producto p ON p_f.idProducto = p.idProducto
+                                JOIN Franquicia f ON p_f.idFranquicia = f.idFranquicia";
+                    var cmd = new SqlCommand(query, conexion);
+                    using (var dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
                             var productoFranquicia = new ProductoFranquicia();
                             var producto = new Producto();
-                            var marca = new Marca();
-                            var categoria = new Categoria();
-
                             var franquicia = new Franquicia();
 
+                            producto.IdProducto = Int32.Parse(dr["idProducto"].ToString());
+                            producto.Nombre = dr["nomProducto"].ToString();
 
-                            producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
-                            producto.Nombre = dr["NombreProducto"].ToString();
-                            producto.Presentacion = dr["PresentacionProducto"].ToString();
-                            producto.Descripcion = dr["DescripcionProducto"].ToString();
-                            producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
-                            producto.Unidad = dr["UnidadProducto"].ToString();
-                            producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+                            franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"].ToString());
+                            franquicia.Nombre = dr["nomFranquicia"].ToString();
 
-                            categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
-                            categoria.Nombre = dr["NombreCategoria"].ToString();
-
-                            marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
-                            marca.Nombre = dr["NombreMarca"].ToString();
-
-                            producto.Marca = marca;
-                            producto.Categoria = categoria;
-
-                            franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"]);
-                            franquicia.Nombre = dr["NombreFranquicia"].ToString();
-                            franquicia.Url = dr["UrlFranquicia"].ToString();
-                            franquicia.Logo = dr["LogoFranquicia"].ToString();
-
-                            IRepositorioSede repositorioSede = new RepositorioSede();
-                            franquicia.Sedes = repositorioSede.GetByFranquicia(franquicia.IdFranquicia);
-
-                            IRepositorioProductoFranquicia repositorioProductoFranquicia = new RepositorioProductoFranquicia();
-                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.GetByFranquicia(franquicia.IdFranquicia);
+                            productoFranquicia.Franquicia = franquicia;
+                            productoFranquicia.Producto = producto;
 
                             productoFranquicia.CodRef = dr["codReferencia"].ToString();
-                            productoFranquicia.Producto = producto;
-                            productoFranquicia.Franquicia = franquicia;
-
                             productosFranquicias.Add(productoFranquicia);
                         }
                     }

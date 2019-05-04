@@ -42,7 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepositorioCliente.cs" />
     <Compile Include="IRepositorioCRUD.cs" />
+    <Compile Include="IRepositorioDetallePedido.cs" />
+    <Compile Include="IRepositorioFranquicia.cs" />
+    <Compile Include="IRepositorioPedido.cs" />
+    <Compile Include="IRepositorioProducto.cs" />
+    <Compile Include="IRepositorioSede.cs" />
+    <Compile Include="IRepositorioTarjeta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

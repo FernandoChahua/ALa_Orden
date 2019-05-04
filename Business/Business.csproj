@@ -41,6 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IServicioCliente.cs" />
+    <Compile Include="IServicioCRUD.cs" />
+    <Compile Include="IServicioDetallePedido.cs" />
+    <Compile Include="IServicioFranquicia.cs" />
+    <Compile Include="IServicioPedido.cs" />
+    <Compile Include="IServicioProducto.cs" />
+    <Compile Include="IServicioSede.cs" />
+    <Compile Include="IServicioTarjeta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

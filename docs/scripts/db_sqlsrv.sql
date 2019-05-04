@@ -127,7 +127,9 @@ select * from Producto_Franquicia
 select * from DetallePedido
 select * from Pedido
 select * from Direccion
-
+select * from Usuario
+select * from Pedido
+select * from Tarjeta
 
 /*QUERY PARA BORRAR MEDIANTE ID*/
 delete from Categoria where idCategoria = 1

@@ -14,16 +14,16 @@ namespace Entity
 
         [Required(ErrorMessage = "Ingrese email valido")]
         [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Por favor ingrese un email valido")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Ingrese nombre de usuario")]
         [DisplayName("Nombre de Usuario")]
-        public string apodo { get; set; }
+        public string Apodo { get; set; }
 
         [Required(ErrorMessage = "Ingrese contraseña")]
         [DisplayName("Contraseña")]
         [DataType(DataType.Password)]
-        public string contrasena { get; set; }
+        public string Contrasena { get; set; }
 
         
     }

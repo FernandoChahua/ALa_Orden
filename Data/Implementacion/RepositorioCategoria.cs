@@ -93,7 +93,7 @@ namespace Data.Implementacion
 
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
@@ -131,7 +131,7 @@ namespace Data.Implementacion
 
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 

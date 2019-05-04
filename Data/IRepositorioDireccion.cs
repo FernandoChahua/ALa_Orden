@@ -9,5 +9,6 @@ namespace Data
     public interface IRepositorioDireccion : IRepositorioCRUD<Direccion>
     {
         List<Direccion> FindByUsuario(int idUsuario);
+        bool DeleteByUsuario(int idUsuario);
     }
 }

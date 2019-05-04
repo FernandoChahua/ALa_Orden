@@ -10,7 +10,7 @@ namespace Data.Implementacion
 {
     public class RepositorioDireccion :IRepositorioDireccion
     {
-        public bool Insert(Categoria t)
+        public bool Insert(Direccion t)
         {
             bool rpta = false;
 
@@ -19,8 +19,11 @@ namespace Data.Implementacion
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
-                    var query = new SqlCommand("insert into Categoria values(@nombre)", conexion);
-                    query.Parameters.AddWithValue("@nombre", t.IdCategoria);
+                    var query = new SqlCommand("insert into Direccion values(@idUsuario,@descripcion,@latitud,@longitud)", conexion);
+                    query.Parameters.AddWithValue("@idUsuario", t.IdUsuario);
+                    query.Parameters.AddWithValue("@descripcion", t.Descripcion);
+                    query.Parameters.AddWithValue("@latitud", t.Latitud);
+                    query.Parameters.AddWithValue("@longitud", t.Longitud);
 
                     query.ExecuteNonQuery();
                     rpta = true;
@@ -35,7 +38,7 @@ namespace Data.Implementacion
             return rpta;
         }
 
-        public bool Update(Categoria t)
+        public bool Update(Direccion t)
         {
             bool rpta = false;
             try
@@ -43,8 +46,10 @@ namespace Data.Implementacion
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
-                    var query = new SqlCommand("update Categoria set nombre = @nombre where idCategoria = " + t.IdCategoria, conexion);
-                    query.Parameters.AddWithValue("@nombre", t.Nombre);
+                    var query = new SqlCommand("update Direccion set descripcion = @descripcion , latitud = @latitud , longitud = @longitud where idDireccion = " + t.IdDireccion, conexion);
+                    query.Parameters.AddWithValue("@descripcion", t.Descripcion);
+                    query.Parameters.AddWithValue("@latitud", t.Latitud);
+                    query.Parameters.AddWithValue("@longitud", t.Longitud);
 
                     query.ExecuteNonQuery();
 
@@ -70,7 +75,7 @@ namespace Data.Implementacion
                     {
                         conexion.Open();
 
-                        var query = new SqlCommand("delete from Categoria where idCategoria = " + id, conexion);
+                        var query = new SqlCommand("delete from Direccion where idDireccion = " + id, conexion);
 
                         query.ExecuteNonQuery();
 
@@ -86,29 +91,30 @@ namespace Data.Implementacion
             return rpta;
         }
 
-        public List<Categoria> GetAll()
+        public List<Direccion> GetAll()
         {
-            var categorias = new List<Categoria>();
+            var direcciones = new List<Direccion>();
 
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("select m.idCategoria, m.nombre as NombreCategoria from Categoria m", conexion);
+                    var query = new SqlCommand("select * from Direccion ", conexion);
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            var categoria = new Categoria();
-                            categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
-                            categoria.Nombre = dr["NombreCategoria"].ToString();
+                            var direccion = new Direccion();
+                            direccion.IdDireccion = Convert.ToInt32(dr["idDireccion"]);
+                            direccion.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
+                            direccion.Descripcion = dr["descripcion"].ToString();
+                            direccion.Latitud = dr["latitud"].ToString();
+                            direccion.Longitud = dr["longitud"].ToString();
 
-                            IRepositorioProducto repositorioProducto = new RepositorioProducto();
-                            categoria.Productos = repositorioProducto.GetByCategoria(categoria.IdCategoria);
 
-                            categorias.Add(categoria);
+                            direcciones.Add(direccion);
 
                         }
                     }
@@ -121,32 +127,31 @@ namespace Data.Implementacion
                 throw;
             }
 
-            return categorias;
+            return direcciones;
         }
 
-        public Categoria FindById(int? id)
+        public Direccion FindById(int? id)
         {
-            Categoria categoria = null;
+            Direccion direccion = null;
 
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("select m.idCategoria, m.nombre as NombreCategoria from Categoria m where idCategoria = " + id.Value, conexion);
+                    var query = new SqlCommand("select * from Direccion where idUsuario = " + id.Value, conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            categoria = new Categoria();
-                            categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
-                            categoria.Nombre = dr["NombreCategoria"].ToString();
-
-                            IRepositorioProducto repositorioProducto = new RepositorioProducto();
-                            categoria.Productos = repositorioProducto.GetByCategoria(categoria.IdCategoria);
-
+                            direccion = new Direccion();
+                            direccion.IdDireccion = Convert.ToInt32(dr["idDireccion"]);
+                            direccion.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
+                            direccion.Descripcion = dr["descripcion"].ToString();
+                            direccion.Latitud = dr["latitud"].ToString();
+                            direccion.Longitud = dr["longitud"].ToString();
                         }
                     }
 
@@ -158,11 +163,71 @@ namespace Data.Implementacion
                 throw;
             }
 
-            return categoria;
+            return direccion;
         }
         public List<Direccion> FindByUsuario(int idUsuario)
         {
+            var direcciones = new List<Direccion>();
 
+            try
+            {
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
+                {
+                    conexion.Open();
+
+                    var query = new SqlCommand("select * from Direccion where idUsuario = "+idUsuario, conexion);
+                    using (var dr = query.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            var direccion = new Direccion();
+                            direccion.IdDireccion = Convert.ToInt32(dr["idDireccion"]);
+                            direccion.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
+                            direccion.Descripcion = dr["descripcion"].ToString();
+                            direccion.Latitud = dr["latitud"].ToString();
+                            direccion.Longitud = dr["longitud"].ToString();
+
+
+                            direcciones.Add(direccion);
+
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return direcciones;
+        }
+        public bool DeleteByUsuario(int idUsuario)
+        {
+            bool rpta = false;
+            if (idUsuario != 0)
+            {
+                try
+                {
+                    using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
+                    {
+                        conexion.Open();
+
+                        var query = new SqlCommand("delete from Direccion where idDireccion = " + idUsuario, conexion);
+
+                        query.ExecuteNonQuery();
+
+                        rpta = true;
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+            return rpta;
         }
     }
 }

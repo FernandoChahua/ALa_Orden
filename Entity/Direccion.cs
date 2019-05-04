@@ -10,9 +10,9 @@ namespace Entity
     {
         public int IdDireccion { get; set; }
         public int IdUsuario { get; set; }
-        public string latencia { get; set; }
-        public string latitud { get; set; }
-        public string descripcion { get; set; }
+        public string Longitud { get; set; }
+        public string Latitud { get; set; }
+        public string Descripcion { get; set; }
 
     }
 }

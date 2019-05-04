@@ -23,13 +23,13 @@ namespace Data.Implementacion
                     var query = new SqlCommand("Insert into Pedido Values(@idCliente,@idSede,@estado,@fecha,@direccion,@nroTransaccion,@subtotal,@precioEnvio,@descuento)", conexion);
                     query.Parameters.AddWithValue("@idCliente", t.Usuario.IdUsuario);
                     query.Parameters.AddWithValue("@idSede", t.Sede.IdSede);
-                    query.Parameters.AddWithValue("@estado", t.estado);
-                    query.Parameters.AddWithValue("@fecha", t.fecha);
-                    query.Parameters.AddWithValue("@direccion", t.direccion);
-                    query.Parameters.AddWithValue("@nroTransaccion", t.nroTransaccion);
-                    query.Parameters.AddWithValue("@subtotal", t.subtotal);
-                    query.Parameters.AddWithValue("@precioEnvio", t.precioEnvio);
-                    query.Parameters.AddWithValue("@descuento", t.descuento);
+                    query.Parameters.AddWithValue("@estado", t.Estado);
+                    query.Parameters.AddWithValue("@fecha", t.Fecha);
+                    query.Parameters.AddWithValue("@direccion", t.Direccion);
+                    query.Parameters.AddWithValue("@nroTransaccion", t.NroTransaccion);
+                    query.Parameters.AddWithValue("@subtotal", t.Subtotal);
+                    query.Parameters.AddWithValue("@precioEnvio", t.PrecioEnvio);
+                    query.Parameters.AddWithValue("@descuento", t.Descuento);
 
                     query.ExecuteNonQuery();
                     rpta = true;
@@ -55,13 +55,13 @@ namespace Data.Implementacion
                     var query = new SqlCommand("Update Pedido SET idCliente = @idCliente , idSede = @idSede , estado = @estado , fecha = @fecha , direccion = @direccion , nroTransaccion = @nroTransaccion , subtotal = @subtotal , precioEnvio = @precioEnvio , descuento = @descuento where idPedido = @idPedido", conexion);
                     query.Parameters.AddWithValue("@idCliente", t.Usuario.IdUsuario);
                     query.Parameters.AddWithValue("@idSede", t.Sede.IdSede);
-                    query.Parameters.AddWithValue("@estado", t.estado);
-                    query.Parameters.AddWithValue("@fecha", t.fecha);
-                    query.Parameters.AddWithValue("@direccion", t.direccion);
-                    query.Parameters.AddWithValue("@nroTransaccion", t.nroTransaccion);
-                    query.Parameters.AddWithValue("@subtotal", t.subtotal);
-                    query.Parameters.AddWithValue("@precioEnvio", t.precioEnvio);
-                    query.Parameters.AddWithValue("@descuento", t.descuento);
+                    query.Parameters.AddWithValue("@estado", t.Estado);
+                    query.Parameters.AddWithValue("@fecha", t.Fecha);
+                    query.Parameters.AddWithValue("@direccion", t.Direccion);
+                    query.Parameters.AddWithValue("@nroTransaccion", t.NroTransaccion);
+                    query.Parameters.AddWithValue("@subtotal", t.Subtotal);
+                    query.Parameters.AddWithValue("@precioEnvio", t.PrecioEnvio);
+                    query.Parameters.AddWithValue("@descuento", t.Descuento);
 
                     query.Parameters.AddWithValue("@idPedido", t.IdPedido);
 
@@ -175,7 +175,7 @@ namespace Data.Implementacion
             return pedidos;
         }
 
-        public Pedido GetById(int? id)
+        public Pedido FindById(int? id)
         {
             Pedido pedido = null;
 
@@ -208,7 +208,7 @@ namespace Data.Implementacion
                             pedido.PrecioEnvio = Convert.ToDecimal(dr["precioEnvio"]);
                             pedido.Descuento = Convert.ToDecimal(dr["descuento"]);
 
-                            usuario.IdCliente = Convert.ToInt32(dr["idCliente"]);
+                            usuario.IdUsuario = Convert.ToInt32(dr["idCliente"]);
                             usuario.Usuario = dr["usuario"].ToString();
                             usuario.Contrasena = dr["contrasena"].ToString();
                             usuario.Email = dr["email"].ToString();
@@ -237,7 +237,7 @@ namespace Data.Implementacion
             return pedido;
         }
 
-        public List<Pedido> GetByCliente(int idCliente)
+        public List<Pedido> GetByUsuario(int idUsuario)
         {
             var pedidos = new List<Pedido>();
 

@@ -18,22 +18,22 @@ namespace Entity
 
         [Required(ErrorMessage = "Por favor seleccione el estado")]
         [DisplayName("Estado")]
-        public string estado { get; set; }
+        public string Estado { get; set; }
 
 
-        public DateTime fecha { get; set; }
+        public DateTime Fecha { get; set; }
 
 
-        public string direccion;
+        public string Direccion;
 
-        public int nroTransaccion;
+        public int NroTransaccion;
 
         //public Descuento SubTotal{get;set;} falta quitarle  {}
 
-        public double subtotal { get; set; }
-        public double precioEnvio { get; set; }
+        public double SubTotal { get; set; }
+        public double PrecioEnvio { get; set; }
 
-    public double descuento { get; set; }
+    public double Descuento { get; set; }
 
     public List<DetallePedido> DetallesPedidos { get; set; }
     }

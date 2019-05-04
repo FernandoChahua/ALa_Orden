@@ -8,6 +8,6 @@ namespace Data
 {
     public interface IRepositorioTarjeta:IRepositorioCRUD<Tarjeta>
     {
-        List<Tarjeta> GetByCliente(int idCliente);
+        List<Tarjeta> GetByUsuario(int idUsuario);
     }
 }

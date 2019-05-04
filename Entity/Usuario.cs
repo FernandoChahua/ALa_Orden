@@ -8,21 +8,23 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entity
 {
-    public class Cliente
+    public class Usuario
     {
-        public int IdCliente { get; set; }
+        public int IdUsuario { get; set; }
+
+        [Required(ErrorMessage = "Ingrese email valido")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Por favor ingrese un email valido")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Ingrese nombre de usuario")]
         [DisplayName("Nombre de Usuario")]
-        public string Usuario { get; set; }
+        public string Apodo { get; set; }
 
         [Required(ErrorMessage = "Ingrese contraseña")]
         [DisplayName("Contraseña")]
         [DataType(DataType.Password)]
         public string Contrasena { get; set; }
 
-        [Required(ErrorMessage ="Ingrese email valido")]
-        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Por favor ingrese un email valido")]
-        public string Email { get; set; }
+        
     }
 }

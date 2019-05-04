@@ -18,22 +18,22 @@ namespace Business.Implementacion
             return repositorioCliente.Delete(id);
         }
 
-        public bool Insert(Cliente c)
+        public bool Insert(Usuario c)
         {
             return repositorioCliente.Insert(c);
         }
 
-        public List<Cliente> GetAll()
+        public List<Usuario> GetAll()
         {
             return repositorioCliente.GetAll();
         }
 
-        public Cliente GetById(int? id)
+        public Usuario GetById(int? id)
         {
             return repositorioCliente.GetById(id);
         }
 
-        public bool Update(Cliente c)
+        public bool Update(Usuario c)
         {
             return repositorioCliente.Update(c);
         }

@@ -21,7 +21,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
                     var query = new SqlCommand("insert into Categoria values(@nombre)", conexion);
-                    query.Parameters.AddWithValue("@nombre", t.IdCategoria);
+                    query.Parameters.AddWithValue("@nombre", t.Nombre);
 
                     query.ExecuteNonQuery();
                     rpta = true;

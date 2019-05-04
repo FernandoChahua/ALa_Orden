@@ -23,7 +23,7 @@ namespace Business.Implementacion
             return repositorioPedido.GetAll();
         }
 
-        public Pedido GetById(int? id)
+        public Pedido FindById(int? id)
         {
             return repositorioPedido.FindById(id);
         }
@@ -38,9 +38,9 @@ namespace Business.Implementacion
             return repositorioPedido.Update(p);
         }
 
-        public List<Pedido> GetByCliente(int idCliente)
+        public List<Pedido> GetByUsuario(int idUsuario)
         {
-            return repositorioPedido.GetByUsuario(idCliente);
+            return repositorioPedido.GetByUsuario(idUsuario);
         }
     }
 }

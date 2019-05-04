@@ -260,7 +260,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj">
-      <Project>{7d14b956-fbbf-4ee5-86c5-9cc0c41f0581}</Project>
+      <Project>{e64cae85-f362-43e8-95b9-cda29a30a345}</Project>
       <Name>Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">

@@ -156,7 +156,7 @@ namespace Data.Implementacion
 
                             pedido.Usuario = usuario;
                             pedido.Sede = sede;
-                            pedido.DetallePedidos = detallePedidos;
+                            pedido.DetallesPedidos = detallePedidos;
 
                             pedidos.Add(pedido);
 

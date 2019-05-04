@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D14B956-FBBF-4EE5-86C5-9CC0C41F0581}</ProjectGuid>
+    <ProjectGuid>{E64CAE85-F362-43E8-95B9-CDA29A30A345}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Business</RootNamespace>
@@ -41,14 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementacion\ServicioUsuario.cs" />
     <Compile Include="Implementacion\ServicioDetallePedido.cs" />
     <Compile Include="Implementacion\ServicioFranquicia.cs" />
     <Compile Include="Implementacion\ServicioPedido.cs" />
     <Compile Include="Implementacion\ServicioProducto.cs" />
     <Compile Include="Implementacion\ServicioSede.cs" />
     <Compile Include="Implementacion\ServicioTarjeta.cs" />
-    <Compile Include="IServicioUsuario.cs" />
+    <Compile Include="Implementacion\ServicioUsuario.cs" />
     <Compile Include="IServicioCRUD.cs" />
     <Compile Include="IServicioDetallePedido.cs" />
     <Compile Include="IServicioFranquicia.cs" />
@@ -56,6 +55,7 @@
     <Compile Include="IServicioProducto.cs" />
     <Compile Include="IServicioSede.cs" />
     <Compile Include="IServicioTarjeta.cs" />
+    <Compile Include="IServicioUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +68,5 @@
       <Name>Entity</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

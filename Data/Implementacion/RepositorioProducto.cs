@@ -81,7 +81,7 @@ namespace Data.Implementacion
             return productos;
         }
 
-        public Producto GetById(int? id)
+        public Producto FindById(int? id)
         {
             Producto producto = null;
             try

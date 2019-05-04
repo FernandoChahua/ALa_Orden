@@ -9,5 +9,6 @@ namespace Data
 {
     public interface IRepositorioSede : IRepositorioCRUD<Sede>
     {
+        List<Sede> GetByFranquicia(int idFranquicia);
     }
 }

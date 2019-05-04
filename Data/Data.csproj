@@ -49,6 +49,7 @@
     <Compile Include="Implementacion\RepositorioMarca.cs" />
     <Compile Include="Implementacion\RepositorioPedido.cs" />
     <Compile Include="Implementacion\RepositorioProducto.cs" />
+    <Compile Include="Implementacion\RepositorioProductoFranquicia.cs" />
     <Compile Include="Implementacion\RepositorioSede.cs" />
     <Compile Include="Implementacion\RepositorioTarjeta.cs" />
     <Compile Include="IRepositorioCategoria.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="IRepositorioMarca.cs" />
     <Compile Include="IRepositorioPedido.cs" />
     <Compile Include="IRepositorioProducto.cs" />
+    <Compile Include="IRepositorioProductoFranquicia.cs" />
     <Compile Include="IRepositorioSede.cs" />
     <Compile Include="IRepositorioTarjeta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

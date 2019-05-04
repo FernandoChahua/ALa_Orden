@@ -255,6 +255,21 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
+        <Content Include="Views\DetallePedido\Index.cshtml" />
+    <Content Include="Views\DetallePedido\Create.cshtml" />
+    <Content Include="Views\DetallePedido\Edit.cshtml" />
+        <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Producto\Create.cshtml" />
+    <Content Include="Views\Producto\Edit.cshtml" />
+        <Content Include="Views\Tarjeta\Index.cshtml" />
+    <Content Include="Views\Tarjeta\Create.cshtml" />
+    <Content Include="Views\Tarjeta\Edit.cshtml" />
+        <Content Include="Views\Sede\Index.cshtml" />
+    <Content Include="Views\Sede\Create.cshtml" />
+    <Content Include="Views\Sede\Edit.cshtml" />
+    <Content Include="Views\Franquicia\Index.cshtml" />
+    <Content Include="Views\Franquicia\Create.cshtml" />
+    <Content Include="Views\Franquicia\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -13,26 +13,27 @@ namespace Entity
 
         // public Usuario usuario;  iria usuario?
 
-       
+        public Usuario Usuario { get; set; }
         public Sede Sede { get; set; }
 
         [Required(ErrorMessage = "Por favor seleccione el estado")]
         [DisplayName("Estado")]
-        public string Estado { get; set; }
+        public string estado { get; set; }
 
 
-        public DateTime Fecha { get; set; }
+        public DateTime fecha { get; set; }
 
 
-        public string Direccion;
+        public string direccion;
 
         public int nroTransaccion;
 
         //public Descuento SubTotal{get;set;} falta quitarle  {}
 
-    public double PrecioEnvio { get; set; }
+        public double subtotal { get; set; }
+        public double precioEnvio { get; set; }
 
-    public double Descuento { get; set; }
+    public double descuento { get; set; }
 
     public List<DetallePedido> DetallesPedidos { get; set; }
     }

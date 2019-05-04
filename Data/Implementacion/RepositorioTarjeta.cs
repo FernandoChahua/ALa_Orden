@@ -53,7 +53,7 @@ namespace Data.Implementacion
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
-                        { var tarjeta = new Tarjeta() { Cliente = new Cliente() };
+                        { var tarjeta = new Tarjeta() { Cliente = new Usuario() };
                             tarjeta.IdTarjeta = Convert.ToInt32(dr["idTarjeta"]);
                             tarjeta.Cliente.IdCliente = Convert.ToInt32(dr["idCliente"]);
                             tarjeta.NroCuenta = dr["nroCuenta"].ToString();
@@ -87,7 +87,7 @@ namespace Data.Implementacion
                     {
                         while (dr.Read())
                         {
-                            tarjeta = new Tarjeta() { Cliente = new Cliente() };
+                            tarjeta = new Tarjeta() { Cliente = new Usuario() };
                             tarjeta.IdTarjeta = Convert.ToInt32(dr["idTarjeta"]);
                             tarjeta.Cliente.IdCliente = Convert.ToInt32(dr["idCliente"]);
                             tarjeta.NroCuenta = dr["nroCuenta"].ToString();
@@ -172,7 +172,7 @@ namespace Data.Implementacion
                     {
                         while (dr.Read())
                         {
-                            var tarjeta = new Tarjeta() { Cliente = new Cliente() };
+                            var tarjeta = new Tarjeta() { Cliente = new Usuario() };
                             tarjeta.IdTarjeta = Convert.ToInt32(dr["idTarjeta"]);
                             tarjeta.Cliente.IdCliente = Convert.ToInt32(dr["idCliente"]);
                             tarjeta.NroCuenta = dr["nroCuenta"].ToString();

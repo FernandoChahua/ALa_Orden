@@ -34,7 +34,7 @@ namespace Data.Implementacion
             return rpta;
         }
 
-        public bool Insert(Cliente c)
+        public bool Insert(Usuario c)
         {
             bool rpta = false;
             try
@@ -60,9 +60,9 @@ namespace Data.Implementacion
             return rpta;
         }
 
-        public List<Cliente> GetAll()
+        public List<Usuario> GetAll()
         {
-            var clientes = new List<Cliente>();
+            var clientes = new List<Usuario>();
             try
             {
                 using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
@@ -73,7 +73,7 @@ namespace Data.Implementacion
                     using (var dr = cmd.ExecuteReader()){
                         while (dr.Read())
                         {
-                            var obj = new Cliente();
+                            var obj = new Usuario();
 
                             obj.IdCliente = Int32.Parse(dr["idCliente"].ToString());
                             obj.Usuario = dr["usuario"].ToString();
@@ -93,9 +93,9 @@ namespace Data.Implementacion
             return clientes;
         }
 
-        public Cliente GetById(int? id)
+        public Usuario GetById(int? id)
         {
-            Cliente cliente = null;
+            Usuario cliente = null;
             try
             {
                 using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
@@ -107,7 +107,7 @@ namespace Data.Implementacion
                     {
                         while (dr.Read())
                         {
-                            cliente = new Cliente();
+                            cliente = new Usuario();
 
                             cliente.IdCliente = Int32.Parse(dr["idCliente"].ToString());
                             cliente.Usuario = dr["usuario"].ToString();
@@ -125,7 +125,7 @@ namespace Data.Implementacion
             return cliente;
         }
 
-        public bool Update(Cliente c)
+        public bool Update(Usuario c)
         {
             bool rpta = false;
             try

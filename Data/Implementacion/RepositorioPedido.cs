@@ -17,19 +17,19 @@ namespace Data.Implementacion
 
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
                     var query = new SqlCommand("Insert into Pedido Values(@idCliente,@idSede,@estado,@fecha,@direccion,@nroTransaccion,@subtotal,@precioEnvio,@descuento)", conexion);
-                    query.Parameters.AddWithValue("@idCliente", t.Cliente.IdCliente);
+                    query.Parameters.AddWithValue("@idCliente", t.Usuario.IdUsuario);
                     query.Parameters.AddWithValue("@idSede", t.Sede.IdSede);
-                    query.Parameters.AddWithValue("@estado", t.Estado);
-                    query.Parameters.AddWithValue("@fecha", t.Fecha);
-                    query.Parameters.AddWithValue("@direccion", t.Direccion);
-                    query.Parameters.AddWithValue("@nroTransaccion", t.NroTransaccion);
-                    query.Parameters.AddWithValue("@subtotal", t.SubTotal);
-                    query.Parameters.AddWithValue("@precioEnvio", t.PrecioEnvio);
-                    query.Parameters.AddWithValue("@descuento", t.Descuento);
+                    query.Parameters.AddWithValue("@estado", t.estado);
+                    query.Parameters.AddWithValue("@fecha", t.fecha);
+                    query.Parameters.AddWithValue("@direccion", t.direccion);
+                    query.Parameters.AddWithValue("@nroTransaccion", t.nroTransaccion);
+                    query.Parameters.AddWithValue("@subtotal", t.subtotal);
+                    query.Parameters.AddWithValue("@precioEnvio", t.precioEnvio);
+                    query.Parameters.AddWithValue("@descuento", t.descuento);
 
                     query.ExecuteNonQuery();
                     rpta = true;
@@ -49,19 +49,19 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
                     var query = new SqlCommand("Update Pedido SET idCliente = @idCliente , idSede = @idSede , estado = @estado , fecha = @fecha , direccion = @direccion , nroTransaccion = @nroTransaccion , subtotal = @subtotal , precioEnvio = @precioEnvio , descuento = @descuento where idPedido = @idPedido", conexion);
-                    query.Parameters.AddWithValue("@idCliente", t.Cliente.IdCliente);
+                    query.Parameters.AddWithValue("@idCliente", t.Usuario.IdUsuario);
                     query.Parameters.AddWithValue("@idSede", t.Sede.IdSede);
-                    query.Parameters.AddWithValue("@estado", t.Estado);
-                    query.Parameters.AddWithValue("@fecha", t.Fecha);
-                    query.Parameters.AddWithValue("@direccion", t.Direccion);
-                    query.Parameters.AddWithValue("@nroTransaccion", t.NroTransaccion);
-                    query.Parameters.AddWithValue("@subtotal", t.SubTotal);
-                    query.Parameters.AddWithValue("@precioEnvio", t.PrecioEnvio);
-                    query.Parameters.AddWithValue("@descuento", t.Descuento);
+                    query.Parameters.AddWithValue("@estado", t.estado);
+                    query.Parameters.AddWithValue("@fecha", t.fecha);
+                    query.Parameters.AddWithValue("@direccion", t.direccion);
+                    query.Parameters.AddWithValue("@nroTransaccion", t.nroTransaccion);
+                    query.Parameters.AddWithValue("@subtotal", t.subtotal);
+                    query.Parameters.AddWithValue("@precioEnvio", t.precioEnvio);
+                    query.Parameters.AddWithValue("@descuento", t.descuento);
 
                     query.Parameters.AddWithValue("@idPedido", t.IdPedido);
 
@@ -85,7 +85,7 @@ namespace Data.Implementacion
             {
                 try
                 {
-                    using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                    using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                     {
                         conexion.Open();
 
@@ -116,11 +116,11 @@ namespace Data.Implementacion
 
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idCliente,c.usuario,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Cliente c,Sede s , Franquicia f where p.idCliente = c.idCliente and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia", conexion);
+                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idCliente,c.usuario,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Usuario c,Sede s , Franquicia f where p.idCliente = c.idCliente and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia", conexion);
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
@@ -128,25 +128,25 @@ namespace Data.Implementacion
                             var pedido = new Pedido();
                             var franquicia = new Franquicia();
                             var sede = new Sede();
-                            var cliente = new Cliente();
+                            var usuario = new Usuario();
 
                             pedido.IdPedido = Convert.ToInt32(dr["idPedido"]);
 
                             IRepositorioDetallePedido repositorioDetallePedido = new RepositorioDetallePedido();
                             var detallePedidos = repositorioDetallePedido.GetByIdPedido(pedido.IdPedido);
 
-                            pedido.Estado = dr["estado"].ToString();
-                            pedido.Fecha = dr["fecha"].ToString();
-                            pedido.Direccion = dr["PedidoDireccion"].ToString();
-                            pedido.NroTransaccion = Convert.ToInt32(dr["nroTransaccion"]);
-                            pedido.SubTotal = Convert.ToDecimal(dr["subtotal"]);
-                            pedido.PrecioEnvio = Convert.ToDecimal(dr["precioEnvio"]);
-                            pedido.Descuento = Convert.ToDecimal(dr["descuento"]);
-
-                            cliente.IdCliente = Convert.ToInt32(dr["idCliente"]);
-                            cliente.Usuario = dr["usuario"].ToString();
-                            cliente.Contrasena = dr["contrasena"].ToString();
-                            cliente.Email = dr["email"].ToString();
+                            pedido.estado = dr["estado"].ToString();
+                            pedido.fecha = dr["fecha"].ToString();
+                            pedido.direccion = dr["PedidoDireccion"].ToString();
+                            pedido.nroTransaccion = Convert.ToInt32(dr["nroTransaccion"]);
+                            pedido.subtotal = Convert.ToDecimal(dr["subtotal"]);
+                            pedido.precioEnvio = Convert.ToDecimal(dr["precioEnvio"]);
+                            pedido.descuento = Convert.ToDecimal(dr["descuento"]);
+                            
+                            usuario.IdCliente = Convert.ToInt32(dr["idCliente"]);
+                            usuario.Usuario = dr["usuario"].ToString();
+                            usuario.Contrasena = dr["contrasena"].ToString();
+                            usuario.Email = dr["email"].ToString();
 
                             franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"]);
                             franquicia.Nombre = dr["nombre"].ToString();
@@ -155,7 +155,7 @@ namespace Data.Implementacion
                             sede.Direccion = dr["SedeDireccion"].ToString();
                             sede.Franquicia = franquicia;
 
-                            pedido.Cliente = cliente;
+                            pedido.Usuario = cliente;
                             pedido.Sede = sede;
                             pedido.DetallePedidos = detallePedidos;
 
@@ -181,11 +181,11 @@ namespace Data.Implementacion
 
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idCliente,c.usuario,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Cliente c,Sede s , Franquicia f where p.idCliente = c.idCliente and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia and p.idPedido = " + id, conexion);
+                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idCliente,c.usuario,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Usuario c,Sede s , Franquicia f where p.idCliente = c.idCliente and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia and p.idPedido = " + id, conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
@@ -194,7 +194,7 @@ namespace Data.Implementacion
                             pedido = new Pedido();
                             var franquicia = new Franquicia();
                             var sede = new Sede();
-                            var cliente = new Cliente();
+                            var usuario = new Usuario();
 
                             IRepositorioDetallePedido repositorioDetallePedido = new RepositorioDetallePedido();
                             var detallePedidos = repositorioDetallePedido.GetByIdPedido(id.Value);
@@ -208,10 +208,10 @@ namespace Data.Implementacion
                             pedido.PrecioEnvio = Convert.ToDecimal(dr["precioEnvio"]);
                             pedido.Descuento = Convert.ToDecimal(dr["descuento"]);
 
-                            cliente.IdCliente = Convert.ToInt32(dr["idCliente"]);
-                            cliente.Usuario = dr["usuario"].ToString();
-                            cliente.Contrasena = dr["contrasena"].ToString();
-                            cliente.Email = dr["email"].ToString();
+                            usuario.IdCliente = Convert.ToInt32(dr["idCliente"]);
+                            usuario.Usuario = dr["usuario"].ToString();
+                            usuario.Contrasena = dr["contrasena"].ToString();
+                            usuario.Email = dr["email"].ToString();
 
                             franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"]);
                             franquicia.Nombre = dr["nombre"].ToString();
@@ -220,7 +220,7 @@ namespace Data.Implementacion
                             sede.Direccion = dr["SedeDireccion"].ToString();
                             sede.Franquicia = franquicia;
 
-                            pedido.Cliente = cliente;
+                            pedido.Usuario = cliente;
                             pedido.Sede = sede;
                             pedido.DetallePedidos = detallePedidos;
                         }
@@ -243,11 +243,11 @@ namespace Data.Implementacion
 
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idCliente,c.usuario,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Cliente c,Sede s , Franquicia f where p.idCliente = c.idCliente and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia and p.idCliente = " + idCliente, conexion);
+                    var query = new SqlCommand("select p.idPedido,p.estado , p.fecha , p.direccion as PedidoDireccion,p.nroTransaccion,p.subtotal,p.precioEnvio,p.descuento,c.idCliente,c.usuario,c.email,c.contrasena,s.idSede,s.direccion as SedeDireccion, f.idFranquicia , f.nombre from Pedido p, Usuario c,Sede s , Franquicia f where p.idCliente = c.idCliente and p.idSede = s.idSede and s.idFranquicia = f.idFranquicia and p.idCliente = " + idCliente, conexion);
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
@@ -255,7 +255,7 @@ namespace Data.Implementacion
                             var pedido = new Pedido();
                             var franquicia = new Franquicia();
                             var sede = new Sede();
-                            var cliente = new Cliente();
+                            var cliente = new Usuario();
 
                             pedido.IdPedido = Convert.ToInt32(dr["idPedido"]);
 
@@ -282,7 +282,7 @@ namespace Data.Implementacion
                             sede.Direccion = dr["SedeDireccion"].ToString();
                             sede.Franquicia = franquicia;
 
-                            pedido.Cliente = cliente;
+                            pedido.Usuario = cliente;
                             pedido.Sede = sede;
                             pedido.DetallePedidos = detallePedidos;
 

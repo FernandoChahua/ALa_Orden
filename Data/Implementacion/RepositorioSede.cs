@@ -43,6 +43,7 @@ namespace Data.Implementacion
             {
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
                 {
+                    conexion.Open();
                     var query = new SqlCommand("select s.idSede,s.direccion as DireccionSede,f.idFranquicia,f.nombre as NombreFranquicia,f.url as UrlFranquicia,f.logo as LogoFranquicia from Franquicia f,Sede s where s.idFranquicia = f.idFranquicia", conexion);
                     using (var dr = query.ExecuteReader())
                     {
@@ -165,6 +166,7 @@ namespace Data.Implementacion
             {
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
                 {
+                    conexion.Open();
                     var query = new SqlCommand("select s.idSede,s.direccion as DireccionSede,f.idFranquicia,f.nombre as NombreFranquicia,f.url as UrlFranquicia,f.logo as LogoFranquicia from Franquicia f,Sede s where s.idFranquicia = f.idFranquicia where s.idFranquicia = "+idFranquicia, conexion);
                     using (var dr = query.ExecuteReader())
                     {

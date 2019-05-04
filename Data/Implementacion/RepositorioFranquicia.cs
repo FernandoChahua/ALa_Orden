@@ -43,6 +43,7 @@ namespace Data.Implementacion
             {
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
                 {
+                    conexion.Open();
                     var query = new SqlCommand("select f.idFranquicia, f.nombre as NombreFranquicia,f.url as UrlFranquicia,f.logo as LogoFranquicia from Franquicia f", conexion);
                     using (var dr = query.ExecuteReader())
                     {

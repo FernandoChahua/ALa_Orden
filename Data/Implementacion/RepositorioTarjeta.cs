@@ -21,8 +21,8 @@ namespace Data.Implementacion
 
                 {
                     conexion.Open();
-                    var query = new SqlCommand("INSERT INTO Tarjeta VALUES(@idCliente,@nroCuenta, @titular, @fechaExp)", conexion);
-                    query.Parameters.AddWithValue("@idCliente", t.Cliente.IdCliente);
+                    var query = new SqlCommand("INSERT INTO Tarjeta VALUES(@idUsuario,@nroCuenta, @titular, @fechaExp)", conexion);
+                    query.Parameters.AddWithValue("@idUsuario", t.Usuario.IdUsuario);
                     query.Parameters.AddWithValue("@nroCuenta", t.NroCuenta);
                     query.Parameters.AddWithValue("@titular", t.Titular);
                     query.Parameters.AddWithValue("@fechaExp", t.FechaExp);
@@ -53,9 +53,9 @@ namespace Data.Implementacion
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
-                        { var tarjeta = new Tarjeta() { Cliente = new Usuario() };
+                        { var tarjeta = new Tarjeta() { Usuario = new Usuario() };
                             tarjeta.IdTarjeta = Convert.ToInt32(dr["idTarjeta"]);
-                            tarjeta.Cliente.IdCliente = Convert.ToInt32(dr["idCliente"]);
+                            tarjeta.Usuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                             tarjeta.NroCuenta = dr["nroCuenta"].ToString();
                             tarjeta.Titular = dr["titular"].ToString();
                             tarjeta.FechaExp = Convert.ToDateTime(dr["fechaExp"]).ToString("dd/MM/yyyy");
@@ -73,7 +73,7 @@ namespace Data.Implementacion
         }
 
 
-        public Tarjeta GetById(int? id)
+        public Tarjeta FindById(int? id)
         {
             Tarjeta tarjeta = null;
             try
@@ -87,9 +87,9 @@ namespace Data.Implementacion
                     {
                         while (dr.Read())
                         {
-                            tarjeta = new Tarjeta() { Cliente = new Usuario() };
+                            tarjeta = new Tarjeta() { Usuario = new Usuario() };
                             tarjeta.IdTarjeta = Convert.ToInt32(dr["idTarjeta"]);
-                            tarjeta.Cliente.IdCliente = Convert.ToInt32(dr["idCliente"]);
+                            tarjeta.Usuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                             tarjeta.NroCuenta = dr["nroCuenta"].ToString();
                             tarjeta.Titular = dr["titular"].ToString();
                             tarjeta.FechaExp = Convert.ToDateTime(dr["fechaExp"]).ToString("dd/MM/yyyy");
@@ -157,7 +157,7 @@ namespace Data.Implementacion
             return rpta;
         }
 
-        public List<Tarjeta> GetByCliente(int idCliente)
+        public List<Tarjeta> GetByUsuario(int idUsuario)
         {
             var tarjetas = new List<Tarjeta>();
             try
@@ -166,15 +166,15 @@ namespace Data.Implementacion
 
                 {
                     conexion.Open();
-                    var query = new SqlCommand("SELECT t.* from Tarjeta t join Cliente c on t.idCliente = c.IdCliente WHERE t.idCliente = " + idCliente, conexion);
+                    var query = new SqlCommand("SELECT t.* from Tarjeta t join Usuario c on t.idUsuario = c.IdUsuario WHERE t.idUsuario = " + idUsuario, conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            var tarjeta = new Tarjeta() { Cliente = new Usuario() };
+                            var tarjeta = new Tarjeta() { Usuario = new Usuario() };
                             tarjeta.IdTarjeta = Convert.ToInt32(dr["idTarjeta"]);
-                            tarjeta.Cliente.IdCliente = Convert.ToInt32(dr["idCliente"]);
+                            tarjeta.Usuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                             tarjeta.NroCuenta = dr["nroCuenta"].ToString();
                             tarjeta.Titular = dr["titular"].ToString();
                             tarjeta.FechaExp = Convert.ToDateTime(dr["fechaExp"]).ToString("dd/MM/yyyy");

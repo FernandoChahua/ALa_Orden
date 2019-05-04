@@ -51,7 +51,9 @@ namespace Presentation.Controllers
 
         public ActionResult Delete(int? id)
         {
-            if (servicioFranquicia.Delete(id.Value))
+            Franquicia f = servicioFranquicia.FindById(id);
+
+            if (f.Sedes.Count>0||servicioFranquicia.Delete(id.Value))
             {
                 return RedirectToAction("Index");
             }

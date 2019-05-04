@@ -24,9 +24,9 @@ namespace Business.Implementacion
             return repositorioTarjeta.GetAll();
         }
 
-        public Tarjeta GetById(int? id)
+        public Tarjeta FindById(int? id)
         {
-            return repositorioTarjeta.GetById(id);
+            return repositorioTarjeta.FindById(id);
         }
 
         public bool Update(Tarjeta t)
@@ -39,9 +39,9 @@ namespace Business.Implementacion
             return repositorioTarjeta.Delete(id);
         }
 
-        public List<Tarjeta> GetByCliente(int idCliente)
+        public List<Tarjeta> GetByUsuario(int idUsuario)
         {
-            return repositorioTarjeta.GetByCliente(idCliente);
+            return repositorioTarjeta.GetByUsuario(idUsuario);
         }
     }
 }

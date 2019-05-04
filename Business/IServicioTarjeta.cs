@@ -10,6 +10,6 @@ namespace Business
 {
     public interface IServicioTarjeta : IServicioCRUD<Tarjeta>
     {
-        List<Tarjeta> GetByCliente(int idCliente);
+        List<Tarjeta> GetByUsuario(int idUsuario);
     }
 }

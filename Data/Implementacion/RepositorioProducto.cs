@@ -16,11 +16,11 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("DELETE FROM Producto WHERE idProducto = @IdProducto", conexion);
+                    var query = new SqlCommand("delete from Producto where idProducto = @idProducto", conexion);
                     query.Parameters.AddWithValue("@IdProducto", id);
 
                     query.ExecuteNonQuery();
@@ -40,24 +40,35 @@ namespace Data.Implementacion
             var productos = new List<Producto>();
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("SELECT * FROM Producto", conexion);
+                    var query = new SqlCommand("select p.idProducto,p.nombre as NombreProducto,p.presentacion as PresentacionProducto,p.cantidad as CantidadProducto,p.Magnitud as MagnitudProducto,p.unidad as UnidadProducto,p.descripcion as DescripcionProducto,p.imagen as ImagenProducto,c.idCategoria, c.nombre as NombreCategoria,m.idMarca,m.nombre as NombreMarca from Producto p, Marca m, Categoria c where p.idMarca = m.idMarca and p.idCategoria = c.idCategoria", conexion);
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
                         {
                             var producto = new Producto();
+                            var categoria = new Categoria();
+                            var marca = new Marca();
 
-                            producto.IdProducto = Convert.ToInt32(dr["IdProducto"]);
-                            producto.Nombre = dr["Nombre"].ToString();
-                            producto.Marca = dr["Marca"].ToString();
-                            producto.Descripcion = dr["Descripcion"].ToString();
-                            producto.Peso = Convert.ToDouble(dr["Peso"].ToString());
-                            producto.Categoria = dr["Categoria"].ToString();
+                            producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
+                            producto.Nombre = dr["NombreProducto"].ToString();
+                            producto.Presentacion = dr["PresentacionProducto"].ToString();
+                            producto.Descripcion = dr["DescripcionProducto"].ToString();
+                            producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
+                            producto.Unidad = dr["UnidadProducto"].ToString();
+                            producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
 
+                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+
+                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+
+                            producto.Marca = marca;
+                            producto.Categoria = categoria;
                             productos.Add(producto);
                         }
                     }
@@ -75,25 +86,36 @@ namespace Data.Implementacion
             Producto producto = null;
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("SELECT * FROM Producto WHERE idProducto = @IdProducto", conexion);
-                    query.Parameters.AddWithValue("@IdProducto", id);
+                    var query = new SqlCommand("select p.idProducto,p.nombre as NombreProducto,p.presentacion as PresentacionProducto,p.cantidad as CantidadProducto,p.Magnitud as MagnitudProducto,p.unidad as UnidadProducto,p.descripcion as DescripcionProducto,p.imagen as ImagenProducto,c.idCategoria, c.nombre as NombreCategoria,m.idMarca,m.nombre as NombreMarca from Producto p, Marca m, Categoria c where p.idMarca = m.idMarca and p.idCategoria = c.idCategoria and p.idProducto = " + id.Value, conexion);
                     using (var dr = query.ExecuteReader())
                     {
 
                         while (dr.Read())
                         {
                             producto = new Producto();
+                            var marca = new Marca();
+                            var categoria = new Categoria();
 
-                            producto.IdProducto = Convert.ToInt32(dr["IdProducto"]);
-                            producto.Nombre = dr["Nombre"].ToString();
-                            producto.Marca = dr["Marca"].ToString();
-                            producto.Descripcion = dr["Descripcion"].ToString();
-                            producto.Peso = Convert.ToDouble(dr["Peso"].ToString());
-                            producto.Categoria = dr["Categoria"].ToString();
+                            producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
+                            producto.Nombre = dr["NombreProducto"].ToString();
+                            producto.Presentacion = dr["PresentacionProducto"].ToString();
+                            producto.Descripcion = dr["DescripcionProducto"].ToString();
+                            producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
+                            producto.Unidad = dr["UnidadProducto"].ToString();
+                            producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+
+                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+
+                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+
+                            producto.Marca = marca;
+                            producto.Categoria = categoria;
                         }
                     }
                 }
@@ -110,17 +132,21 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("INSERT INTO Producto VALUES(@Nombre, @Marca, @Descripcion, @Peso, @Categoria)", conexion);
+                    var query = new SqlCommand("insert into Producto values(@idCategoria, @idMarca, @nombre, @presentacion, @cantidad, @magnitud, @unidad, @descripcion, @imagen)", conexion);
 
-                    query.Parameters.AddWithValue("@Nombre", t.Nombre);
-                    query.Parameters.AddWithValue("@Marca", t.Marca);
-                    query.Parameters.AddWithValue("@Descripcion", t.Descripcion);
-                    query.Parameters.AddWithValue("@Peso", t.Peso);
-                    query.Parameters.AddWithValue("@Categoria", t.Categoria);
+                    query.Parameters.AddWithValue("@idCategoria", t.Categoria.IdCategoria);
+                    query.Parameters.AddWithValue("@idMarca", t.Marca.IdMarca);
+                    query.Parameters.AddWithValue("@nombre", t.Nombre);
+                    query.Parameters.AddWithValue("@presentacion", t.Categoria);
+                    query.Parameters.AddWithValue("@cantidad", t.Cantidad);
+                    query.Parameters.AddWithValue("@magnitud", t.Magnitud);
+                    query.Parameters.AddWithValue("@unidad", t.Unidad);
+                    query.Parameters.AddWithValue("@descripcion", t.Descripcion);
+                    query.Parameters.AddWithValue("@imagen", t.Imagen);
 
                     query.ExecuteNonQuery();
 
@@ -140,18 +166,21 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("UPDATE Producto SET nombre = @Nombre, marca = @Marca, descripcion = @Descripcion, peso = @Peso, categoria = @Categoria WHERE idProducto = @IdProducto", conexion);
+                    var query = new SqlCommand("update Producto set idCategoria=@idCategoria,idMarca=@idMarca,nombre=@nombre,presentacion=@presentacion,cantidad=@cantidad,magnitud=@magnitud,unidad=@unidad,descripcion=@descripcion,imagen=@imagen where idProducto = " + t.IdProducto, conexion);
 
-                    query.Parameters.AddWithValue("@IdProducto", t.IdProducto);
-                    query.Parameters.AddWithValue("@Nombre", t.Nombre);
-                    query.Parameters.AddWithValue("@Marca", t.Marca);
-                    query.Parameters.AddWithValue("@Descripcion", t.Descripcion);
-                    query.Parameters.AddWithValue("@Peso", t.Peso);
-                    query.Parameters.AddWithValue("@Categoria", t.Categoria);
+                    query.Parameters.AddWithValue("@idCategoria", t.Categoria.IdCategoria);
+                    query.Parameters.AddWithValue("@idMarca", t.Marca.IdMarca);
+                    query.Parameters.AddWithValue("@nombre", t.Nombre);
+                    query.Parameters.AddWithValue("@presentacion", t.Categoria);
+                    query.Parameters.AddWithValue("@cantidad", t.Cantidad);
+                    query.Parameters.AddWithValue("@magnitud", t.Magnitud);
+                    query.Parameters.AddWithValue("@unidad", t.Unidad);
+                    query.Parameters.AddWithValue("@descripcion", t.Descripcion);
+                    query.Parameters.AddWithValue("@imagen", t.Imagen);
 
                     query.ExecuteNonQuery();
 
@@ -165,7 +194,7 @@ namespace Data.Implementacion
             return rpta;
         }
 
-        public List<Producto> GetByFranquicia(int idFranquicia)
+        public List<Producto> GetByCategoria(int idCategoria)
         {
             var productos = new List<Producto>();
             try
@@ -174,19 +203,77 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("select p.* from Producto p JOIN Producto_Franquicia pf on p.idProducto = pf.idProducto JOIN Franquicia f on f.idFranquicia = pf.idFranquicia WHERE f.idFranquicia = " + idFranquicia, conexion);
+                    var query = new SqlCommand("select p.idProducto,p.nombre as NombreProducto,p.presentacion as PresentacionProducto,p.cantidad as CantidadProducto,p.Magnitud as MagnitudProducto,p.unidad as UnidadProducto,p.descripcion as DescripcionProducto,p.imagen as ImagenProducto,c.idCategoria, c.nombre as NombreCategoria,m.idMarca,m.nombre as NombreMarca from Producto p, Marca m, Categoria c where p.idMarca = m.idMarca and p.idCategoria = c.idCategoria and p.idCategoria = " + idCategoria, conexion);
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
                         {
                             var producto = new Producto();
+                            var marca = new Marca();
+                            var categoria = new Categoria();
 
-                            producto.IdProducto = Convert.ToInt32(dr["IdProducto"]);
-                            producto.Nombre = dr["Nombre"].ToString();
-                            producto.Marca = dr["Marca"].ToString();
-                            producto.Descripcion = dr["Descripcion"].ToString();
-                            producto.Peso = Convert.ToDouble(dr["Peso"].ToString());
-                            producto.Categoria = dr["Categoria"].ToString();
+                            producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
+                            producto.Nombre = dr["NombreProducto"].ToString();
+                            producto.Presentacion = dr["PresentacionProducto"].ToString();
+                            producto.Descripcion = dr["DescripcionProducto"].ToString();
+                            producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
+                            producto.Unidad = dr["UnidadProducto"].ToString();
+                            producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+
+                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+
+                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+
+                            producto.Marca = marca;
+                            producto.Categoria = categoria;
+
+                            productos.Add(producto);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return productos;
+        }
+        public List<Producto> GetByMarca(int idMarca)
+        {
+            var productos = new List<Producto>();
+            try
+            {
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                {
+                    conexion.Open();
+
+                    var query = new SqlCommand("select p.idProducto,p.nombre as NombreProducto,p.presentacion as PresentacionProducto,p.cantidad as CantidadProducto,p.Magnitud as MagnitudProducto,p.unidad as UnidadProducto,p.descripcion as DescripcionProducto,p.imagen as ImagenProducto,c.idCategoria, c.nombre as NombreCategoria,m.idMarca,m.nombre as NombreMarca from Producto p, Marca m, Categoria c where p.idMarca = m.idMarca and p.idCategoria = c.idCategoria and p.idMarca = " + idMarca, conexion);
+                    using (var dr = query.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            var producto = new Producto();
+                            var marca = new Marca();
+                            var categoria = new Categoria();
+
+                            producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
+                            producto.Nombre = dr["NombreProducto"].ToString();
+                            producto.Presentacion = dr["PresentacionProducto"].ToString();
+                            producto.Descripcion = dr["DescripcionProducto"].ToString();
+                            producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
+                            producto.Unidad = dr["UnidadProducto"].ToString();
+                            producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+
+                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+
+                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+
+                            producto.Marca = marca;
+                            producto.Categoria = categoria;
 
                             productos.Add(producto);
                         }

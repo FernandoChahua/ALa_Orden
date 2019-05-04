@@ -18,13 +18,13 @@ namespace Entity
 
         [Required(ErrorMessage = "Por favor seleccione el estado")]
         [DisplayName("Estado")]
-        private string Estado { get; set; }
+        public string Estado { get; set; }
 
 
-        private DateTime Fecha { get; set; }
+        public DateTime Fecha { get; set; }
 
 
-        private string Direccion;
+        public string Direccion;
 
         public int nroTransaccion;
 

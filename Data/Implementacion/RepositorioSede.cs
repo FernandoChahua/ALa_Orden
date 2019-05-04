@@ -121,7 +121,7 @@ namespace Data.Implementacion
                     conexion.Open();
                     var query = new SqlCommand("insert into Sede values(@idFranquicia,@direccion)", conexion);
                     query.Parameters.AddWithValue("@idFranquicia", s.Franquicia.IdFranquicia);
-                    query.Parameters.AddWithValue("@url", s.Direccion);
+                    query.Parameters.AddWithValue("@direccion", s.Direccion);
 
                     query.ExecuteNonQuery();
                     rpta = true;

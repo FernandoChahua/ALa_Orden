@@ -49,10 +49,11 @@ namespace Presentation.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult Delete(int? id)
         {
-            if (servicioCategoria.Delete(id.Value))
+            Categoria ctg = servicioCategoria.FindById(id);
+            
+            if (ctg.Productos.Count>0||servicioCategoria.Delete(id.Value))
             {
                 return RedirectToAction("Index");
             }

@@ -50,10 +50,11 @@ namespace Presentation.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult Delete(int? id)
         {
-            if (servicioMarca.Delete(id.Value))
+            Marca mrc = servicioMarca.FindById(id);
+
+            if(mrc.Productos.Count > 0 || servicioMarca.Delete(id.Value))
             {
                 return RedirectToAction("Index");
             }

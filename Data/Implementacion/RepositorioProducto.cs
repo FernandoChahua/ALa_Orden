@@ -143,12 +143,12 @@ namespace Data.Implementacion
                     query.Parameters.AddWithValue("@idCategoria", t.Categoria.IdCategoria);
                     query.Parameters.AddWithValue("@idMarca", t.Marca.IdMarca);
                     query.Parameters.AddWithValue("@nombre", t.Nombre);
-                    query.Parameters.AddWithValue("@presentacion", t.Categoria);
+                    query.Parameters.AddWithValue("@presentacion", t.Presentacion);
                     query.Parameters.AddWithValue("@cantidad", t.Cantidad);
                     query.Parameters.AddWithValue("@magnitud", t.Magnitud);
                     query.Parameters.AddWithValue("@unidad", t.Unidad);
                     query.Parameters.AddWithValue("@descripcion", t.Descripcion);
-                    query.Parameters.AddWithValue("@imagen", t.Imagen);
+                    query.Parameters.AddWithValue("@imagen", "_"); //FALTA AGREGAR UURL IMAGEN
 
                     query.ExecuteNonQuery();
 
@@ -177,12 +177,12 @@ namespace Data.Implementacion
                     query.Parameters.AddWithValue("@idCategoria", t.Categoria.IdCategoria);
                     query.Parameters.AddWithValue("@idMarca", t.Marca.IdMarca);
                     query.Parameters.AddWithValue("@nombre", t.Nombre);
-                    query.Parameters.AddWithValue("@presentacion", t.Categoria);
+                    query.Parameters.AddWithValue("@presentacion", t.Presentacion);
                     query.Parameters.AddWithValue("@cantidad", t.Cantidad);
                     query.Parameters.AddWithValue("@magnitud", t.Magnitud);
                     query.Parameters.AddWithValue("@unidad", t.Unidad);
                     query.Parameters.AddWithValue("@descripcion", t.Descripcion);
-                    query.Parameters.AddWithValue("@imagen", t.Imagen);
+                    query.Parameters.AddWithValue("@imagen", "_");//FALTA AGREGAR UURL IMAGEN
 
                     query.ExecuteNonQuery();
 
@@ -201,7 +201,7 @@ namespace Data.Implementacion
             var productos = new List<Producto>();
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 
@@ -248,7 +248,7 @@ namespace Data.Implementacion
             var productos = new List<Producto>();
             try
             {
-                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
 

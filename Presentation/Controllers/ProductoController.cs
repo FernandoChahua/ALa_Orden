@@ -23,14 +23,14 @@ namespace ALaOrden.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.producto = servicioProducto.GetAll();
+            ViewBag.categorias = servicioCategoria.GetAll();
+            ViewBag.marcas = servicioMarca.GetAll();
             return View();
         }
 
         [HttpPost]
         public ActionResult Create(Producto producto)
         {
-            ViewBag.producto = servicioProducto.GetAll();
             ViewBag.categorias = servicioCategoria.GetAll();
             ViewBag.marcas = servicioMarca.GetAll();
             bool rptaInsert = servicioProducto.Insert(producto);
@@ -56,13 +56,14 @@ namespace ALaOrden.Controllers
 
         public ActionResult Edit(int? id)
         {
+            ViewBag.categorias = servicioCategoria.GetAll();
+            ViewBag.marcas = servicioMarca.GetAll();
             if (id == null)
             {
                 return HttpNotFound();
             }
             Producto producto = servicioProducto.FindById(id);
-            ViewBag.categorias = servicioCategoria.GetAll();
-            ViewBag.marcas = servicioMarca.GetAll();
+
 
             return View(producto);
         }
@@ -70,10 +71,8 @@ namespace ALaOrden.Controllers
         [HttpPost]
         public ActionResult Edit(Producto p)
         {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+            ViewBag.categorias = servicioCategoria.GetAll();
+            ViewBag.marcas = servicioMarca.GetAll();
             bool rptaEdit = servicioProducto.Update(p);
             if (rptaEdit)
             {

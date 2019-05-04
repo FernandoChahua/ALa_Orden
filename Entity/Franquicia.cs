@@ -12,7 +12,7 @@ namespace Entity
         public int IdFranquicia { get; set; }
 
         [Required(ErrorMessage = "Por favor ingrese el nombre de la Franquicia")]
-        [DisplayName("Nombre Franquicia")]
+        [DisplayName("Franquicia")]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "Por favor ingrese la direccion URL")]

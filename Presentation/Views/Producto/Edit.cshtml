@@ -17,6 +17,7 @@
     <h4>Producto</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <div class="form-group">
         @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -30,6 +31,14 @@
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Marca.IdMarca, new SelectList(ViewBag.marcas, "idMarca", "Nombre"), "---Select---", new { @class = "select2_demo_4 form-control" })
             @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Categoria, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Categoria.IdCategoria, new SelectList(ViewBag.categorias, "idCategoria", "Nombre"), "---Select---", new { @class = "select2_demo_4 form-control" })
+            @Html.ValidationMessageFor(model => model.Categoria, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -71,15 +80,6 @@
             @Html.ValidationMessageFor(model => model.Presentacion, "", new { @class = "text-danger" })
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Categoria, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Categoria.IdCategoria, new SelectList(ViewBag.categorias, "idCategoria", "Nombre"), "---Select---", new { @class = "select2_demo_4 form-control" })
-            @Html.ValidationMessageFor(model => model.Categoria, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

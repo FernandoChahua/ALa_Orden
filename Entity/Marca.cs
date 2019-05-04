@@ -12,7 +12,7 @@ namespace Entity
         public int IdMarca { get; set; }
 
         [Required(ErrorMessage = "Por favor ingrese el nombre de la Marca")]
-        [DisplayName("Nombre Marca")]
+        [DisplayName("Marca")]
         public string Nombre { get; set; }
 
         public List<Producto> Productos { get; set; }

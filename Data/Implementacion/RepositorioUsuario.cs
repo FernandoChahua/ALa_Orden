@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace Data.Implementacion
 {
-    public class RepositorioCliente : IRepositorioCliente
+    public class RepositorioUsuario : IRepositorioUsuario
     {
         public bool Delete(int id)
         {

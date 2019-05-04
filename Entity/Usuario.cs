@@ -24,6 +24,7 @@ namespace Entity
         [DisplayName("Contraseña")]
         [DataType(DataType.Password)]
         public string Contrasena { get; set; }
+        public List<Direccion> Direcciones { get; set; }
 
         
     }

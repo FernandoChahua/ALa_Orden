@@ -11,7 +11,7 @@ namespace Business.Implementacion
 {
     public class ServicioCliente : IServicioCliente
     {
-        private IRepositorioCliente repositorioCliente = new RepositorioCliente();
+        private IRepositorioUsuario repositorioCliente = new RepositorioUsuario();
 
         public bool Delete(int id)
         {

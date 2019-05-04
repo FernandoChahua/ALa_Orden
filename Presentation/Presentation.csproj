@@ -264,6 +264,9 @@
         <Content Include="Views\Tarjeta\Index.cshtml" />
     <Content Include="Views\Tarjeta\Create.cshtml" />
     <Content Include="Views\Tarjeta\Edit.cshtml" />
+        <Content Include="Views\Pedido\Index.cshtml" />
+            <Content Include="Views\Pedido\Create.cshtml" />
+    <Content Include="Views\Pedido\Edit.cshtml" />
         <Content Include="Views\Sede\Index.cshtml" />
     <Content Include="Views\Sede\Create.cshtml" />
     <Content Include="Views\Sede\Edit.cshtml" />

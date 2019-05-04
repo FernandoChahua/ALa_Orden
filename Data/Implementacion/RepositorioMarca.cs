@@ -19,8 +19,8 @@ namespace Data.Implementacion
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conexion.Open();
-                    var query = new SqlCommand("insert into Categoria values(@nombre)", conexion);
-                    query.Parameters.AddWithValue("@nombre", t.IdMarca);
+                    var query = new SqlCommand("insert into Marca values(@nombre)", conexion);
+                    query.Parameters.AddWithValue("@nombre", t.Nombre);
 
                     query.ExecuteNonQuery();
                     rpta = true;
@@ -62,15 +62,13 @@ namespace Data.Implementacion
         public bool Delete(int id)
         {
             bool rpta = false;
-            if (id != 0)
-            {
                 try
                 {
                     using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                     {
                         conexion.Open();
 
-                        var query = new SqlCommand("delete from Marca where idMarca = "+id, conexion);
+                        var query = new SqlCommand("delete from Marca where idMarca = " + id, conexion);
 
                         query.ExecuteNonQuery();
 
@@ -81,7 +79,7 @@ namespace Data.Implementacion
                 catch (Exception ex)
                 {
                     throw;
-                }
+           
             }
             return rpta;
         }

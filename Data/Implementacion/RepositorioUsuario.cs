@@ -145,7 +145,7 @@ namespace Data.Implementacion
                 using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conn.Open();
-                    var query = "UPDATE usuario SET usuario = @apodo, contrasena = @contrasena, email = @email WHERE idUsuario = @id";
+                    var query = "UPDATE usuario SET apodo = @apodo, contrasena = @contrasena, email = @email WHERE idUsuario = @id";
                     var cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@apodo", c.Apodo);
                     cmd.Parameters.AddWithValue("@contrasena", c.Contrasena);

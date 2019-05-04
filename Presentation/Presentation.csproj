@@ -179,6 +179,7 @@
     <Compile Include="Controllers\FranquiciaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarcaController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProductoFranquiciaController.cs" />
@@ -280,6 +281,9 @@
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\ProductoFranquicia\Index.cshtml" />
     <Content Include="Views\ProductoFranquicia\Create.cshtml" />
+    <Content Include="Views\Marca\Index.cshtml" />
+    <Content Include="Views\Marca\Create.cshtml" />
+    <Content Include="Views\Marca\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

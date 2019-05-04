@@ -138,11 +138,10 @@ namespace Data.Implementacion
                             pedido.Estado = dr["estado"].ToString();
                             pedido.Fecha = dr["fecha"].ToString();
                             pedido.Direccion = dr["PedidoDireccion"].ToString();
-                            pedido.nroTransaccion = Convert.ToInt32(dr["nroTransaccion"]);
-                            pedido.subtotal = Convert.ToDecimal(dr["subtotal"]);
-                            pedido.precioEnvio = Convert.ToDecimal(dr["precioEnvio"]);
-                            pedido.descuento = Convert.ToDecimal(dr["descuento"]);
-                            
+                            pedido.NroTransaccion = Convert.ToInt32(dr["nroTransaccion"]);
+                            pedido.SubTotal = Convert.ToDouble(dr["subtotal"]);
+                            pedido.PrecioEnvio = Convert.ToDouble(dr["precioEnvio"]);
+                            pedido.Descuento = Convert.ToDouble(dr["descuento"]);                            
                             usuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                             usuario.Apodo = dr["apodo"].ToString();
                             usuario.Contrasena = dr["contrasena"].ToString();
@@ -199,19 +198,18 @@ namespace Data.Implementacion
                             IRepositorioDetallePedido repositorioDetallePedido = new RepositorioDetallePedido();
                             var detallePedidos = repositorioDetallePedido.GetByIdPedido(id.Value);
 
-                            pedido.IdPedido = Convert.ToInt32(dr["idPedido"]);
                             pedido.Estado = dr["estado"].ToString();
                             pedido.Fecha = dr["fecha"].ToString();
                             pedido.Direccion = dr["PedidoDireccion"].ToString();
                             pedido.NroTransaccion = Convert.ToInt32(dr["nroTransaccion"]);
-                            pedido.SubTotal = Convert.ToDecimal(dr["subtotal"]);
-                            pedido.PrecioEnvio = Convert.ToDecimal(dr["precioEnvio"]);
-                            pedido.Descuento = Convert.ToDecimal(dr["descuento"]);
-
+                            pedido.SubTotal = Convert.ToDouble(dr["subtotal"]);
+                            pedido.PrecioEnvio = Convert.ToDouble(dr["precioEnvio"]);
+                            pedido.Descuento = Convert.ToDouble(dr["descuento"]);
                             usuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                             usuario.Apodo = dr["apodo"].ToString();
                             usuario.Contrasena = dr["contrasena"].ToString();
                             usuario.Email = dr["email"].ToString();
+
 
                             franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"]);
                             franquicia.Nombre = dr["nombre"].ToString();
@@ -222,7 +220,7 @@ namespace Data.Implementacion
 
                             pedido.Usuario = usuario;
                             pedido.Sede = sede;
-                            pedido.DetallePedidos = detallePedidos;
+                            pedido.DetallesPedidos = detallePedidos;
                         }
                     }
 
@@ -266,12 +264,11 @@ namespace Data.Implementacion
                             pedido.Fecha = dr["fecha"].ToString();
                             pedido.Direccion = dr["PedidoDireccion"].ToString();
                             pedido.NroTransaccion = Convert.ToInt32(dr["nroTransaccion"]);
-                            pedido.SubTotal = Convert.ToDecimal(dr["subtotal"]);
-                            pedido.PrecioEnvio = Convert.ToDecimal(dr["precioEnvio"]);
-                            pedido.Descuento = Convert.ToDecimal(dr["descuento"]);
-
+                            pedido.SubTotal = Convert.ToDouble(dr["subtotal"]);
+                            pedido.PrecioEnvio = Convert.ToDouble(dr["precioEnvio"]);
+                            pedido.Descuento = Convert.ToDouble(dr["descuento"]);
                             usuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
-                            usuario.Usuario = dr["usuario"].ToString();
+                            usuario.Apodo = dr["apodo"].ToString();
                             usuario.Contrasena = dr["contrasena"].ToString();
                             usuario.Email = dr["email"].ToString();
 
@@ -284,7 +281,7 @@ namespace Data.Implementacion
 
                             pedido.Usuario = usuario;
                             pedido.Sede = sede;
-                            pedido.DetallePedidos = detallePedidos;
+                            pedido.DetallesPedidos = detallePedidos;
 
                             pedidos.Add(pedido);
 

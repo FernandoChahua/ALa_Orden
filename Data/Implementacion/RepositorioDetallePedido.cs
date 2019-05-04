@@ -128,7 +128,7 @@ namespace Data.Implementacion
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
                 {
                     conexion.Open();
-                    var query = new SqlCommand("select dp.idPedido, dp.precio, dp.cantidad, p.idProducto, p.nombre as ProductoNombre, p.marca, p.descripcion, p.peso, p.categoria from DetallePedido dp , Producto p where dp.idProducto = p.idProducto", conexion);
+                    var query = new SqlCommand("select dp.idPedido ,dp.precio as CantidadPrecio,dp.cantidad as CantidadDetalle,p.idProducto,p.nombre as NombreProducto,p.presentacion as PresentacionProducto,p.cantidad as CantidadProducto,p.Magnitud as MagnitudProducto,p.unidad as UnidadProducto,p.descripcion as DescripcionProducto,p.imagen as ImagenProducto,c.idCategoria, c.nombre as NombreCategoria,m.idMarca,m.nombre as NombreMarca from Marca m ,Categoria c, Producto p,DetallePedido dp where p.idMarca = m.idMarca and p.idCategoria = c.idCategoria and dp.idProducto = p.idProducto", conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
@@ -137,18 +137,30 @@ namespace Data.Implementacion
                         {
                             DetallePedido detallePedido = new DetallePedido();
                             Producto producto = new Producto();
+                            Marca marca = new Marca();
+                            Categoria categoria = new Categoria();
+
+                            producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
+                            producto.Nombre = dr["NombreProducto"].ToString();
+                            producto.Presentacion = dr["PresentacionProducto"].ToString();
+                            producto.Descripcion = dr["DescripcionProducto"].ToString();
+                            producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
+                            producto.Unidad = dr["UnidadProducto"].ToString();
+                            producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+
+                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+
+                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+
+                            producto.Marca = marca;
+                            producto.Categoria = categoria;
 
                             detallePedido.IdPedido = Convert.ToInt32(dr["idPedido"]);
-                            detallePedido.Precio = Convert.ToDecimal(dr["precio"]);
+                            detallePedido.Precio = Convert.ToDouble(dr["precio"]);
                             detallePedido.Cantidad = Convert.ToInt32(dr["cantidad"]);
-                            
-                            producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
-                            producto.Marca = dr["marca"].ToString();
-                            producto.Descripcion = dr["descripcion"].ToString();
-                            producto.Peso = Convert.ToDouble(dr["peso"]);
-                            producto.Nombre = dr["ProductoNombre"].ToString();
 
-                            producto.Categoria = dr["categoria"].ToString();
                             detallePedido.Producto = producto;
 
                             detallePedidos.Add(detallePedido);
@@ -174,7 +186,7 @@ namespace Data.Implementacion
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
                 {
                     conexion.Open();
-                    var query = new SqlCommand("select dp.idPedido, dp.precio, dp.cantidad, p.idProducto, p.nombre as ProductoNombre, p.marca, p.descripcion, p.peso, p.categoria from DetallePedido dp, Producto p where dp.idProducto = p.idProducto and dp.idPedido = " + idPedido, conexion);
+                    var query = new SqlCommand("select dp.idPedido ,dp.precio as CantidadPrecio,dp.cantidad as CantidadDetalle,p.idProducto,p.nombre as NombreProducto,p.presentacion as PresentacionProducto,p.cantidad as CantidadProducto,p.Magnitud as MagnitudProducto,p.unidad as UnidadProducto,p.descripcion as DescripcionProducto,p.imagen as ImagenProducto,c.idCategoria, c.nombre as NombreCategoria,m.idMarca,m.nombre as NombreMarca from Marca m ,Categoria c, Producto p,DetallePedido dp where p.idMarca = m.idMarca and p.idCategoria = c.idCategoria and dp.idProducto = p.idProducto and dp.idPedido = "+idPedido, conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
@@ -183,18 +195,30 @@ namespace Data.Implementacion
                         {
                             DetallePedido detallePedido = new DetallePedido();
                             Producto producto = new Producto();
-
-                            detallePedido.IdPedido = Convert.ToInt32(dr["idPedido"]);
-                            detallePedido.Precio = Convert.ToDecimal(dr["precio"]);
-                            detallePedido.Cantidad = Convert.ToInt32(dr["cantidad"]);
+                            Marca marca = new Marca();
+                            Categoria categoria = new Categoria();
 
                             producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
-                            producto.Marca = dr["marca"].ToString();
-                            producto.Descripcion = dr["descripcion"].ToString();
-                            producto.Peso = Convert.ToDouble(dr["peso"]);
-                            producto.Nombre = dr["ProductoNombre"].ToString();
+                            producto.Nombre = dr["NombreProducto"].ToString();
+                            producto.Presentacion = dr["PresentacionProducto"].ToString();
+                            producto.Descripcion = dr["DescripcionProducto"].ToString();
+                            producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
+                            producto.Unidad = dr["UnidadProducto"].ToString();
+                            producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
 
-                            producto.Categoria = dr["categoria"].ToString();
+                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+
+                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+
+                            producto.Marca = marca;
+                            producto.Categoria = categoria;
+
+                            detallePedido.IdPedido = Convert.ToInt32(dr["idPedido"]);
+                            detallePedido.Precio = Convert.ToDouble(dr["precio"]);
+                            detallePedido.Cantidad = Convert.ToInt32(dr["cantidad"]);
+
                             detallePedido.Producto = producto;
 
                             detallePedidos.Add(detallePedido);
@@ -211,12 +235,12 @@ namespace Data.Implementacion
             return detallePedidos;
         }
 
-        public DetallePedido GetById(int? id)
+        public DetallePedido FindById(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public DetallePedido GetById(DetallePedido dp)
+        public DetallePedido FindById(DetallePedido dp)
         {
             DetallePedido detallePedido = null;
 
@@ -225,8 +249,9 @@ namespace Data.Implementacion
                 using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
                 {
                     conexion.Open();
-                    var query = new SqlCommand("select dp.idPedido, dp.precio, dp.cantidad, p.idProducto, p.nombre as ProductoNombre, p.marca, p.descripcion, p.peso, p.categoria from DetallePedido dp , Producto p where dp.idProducto = p.idProducto and dp.idPedido = " + dp.IdPedido + " and dp.idProducto = " + dp.Producto.IdProducto, conexion);
-
+                    var query = new SqlCommand("select dp.idPedido ,dp.precio as CantidadPrecio,dp.cantidad as CantidadDetalle,p.idProducto,p.nombre as NombreProducto,p.presentacion as PresentacionProducto,p.cantidad as CantidadProducto,p.Magnitud as MagnitudProducto,p.unidad as UnidadProducto,p.descripcion as DescripcionProducto,p.imagen as ImagenProducto,c.idCategoria, c.nombre as NombreCategoria,m.idMarca,m.nombre as NombreMarca from Marca m ,Categoria c, Producto p,DetallePedido dp where p.idMarca = m.idMarca and p.idCategoria = c.idCategoria and dp.idProducto = p.idProducto and dp.idPedido = @idPedido and dp.idProducto = @idProducto", conexion);
+                    query.Parameters.AddWithValue("@idPedido", dp.IdPedido);
+                    query.Parameters.AddWithValue("@idProducot", dp.Producto.IdProducto);
                     using (var dr = query.ExecuteReader())
                     {
 
@@ -234,20 +259,32 @@ namespace Data.Implementacion
                         {
                             detallePedido = new DetallePedido();
                             Producto producto = new Producto();
+                            Marca marca = new Marca();
+                            Categoria categoria = new Categoria();
+
+                            producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
+                            producto.Nombre = dr["NombreProducto"].ToString();
+                            producto.Presentacion = dr["PresentacionProducto"].ToString();
+                            producto.Descripcion = dr["DescripcionProducto"].ToString();
+                            producto.Cantidad = Convert.ToInt32(dr["CantidadProducto"]);
+                            producto.Unidad = dr["UnidadProducto"].ToString();
+                            producto.Magnitud = Convert.ToDouble(dr["MagnitudProducto"]);
+
+                            producto.Categoria.IdCategoria = Convert.ToInt32(dr["idCategoria"]);
+                            producto.Categoria.Nombre = dr["NombreCategoria"].ToString();
+
+                            producto.Marca.IdMarca = Convert.ToInt32(dr["idMarca"]);
+                            producto.Marca.Nombre = dr["NombreMarca"].ToString();
+
+                            producto.Marca = marca;
+                            producto.Categoria = categoria;
 
                             detallePedido.IdPedido = Convert.ToInt32(dr["idPedido"]);
-                            detallePedido.Precio = Convert.ToDecimal(dr["precio"]);
+                            detallePedido.Precio = Convert.ToDouble(dr["precio"]);
                             detallePedido.Cantidad = Convert.ToInt32(dr["cantidad"]);
-                            
-                            producto.IdProducto = Convert.ToInt32(dr["idProducto"]);
-                            producto.Marca = dr["marca"].ToString();
-                            producto.Descripcion = dr["descripcion"].ToString();
-                            producto.Peso = Convert.ToDouble(dr["peso"]);
-                            producto.Nombre = dr["ProductoNombre"].ToString();
-
-                            producto.Categoria = dr["categoria"].ToString();
 
                             detallePedido.Producto = producto;
+
                         }
                     }
                 }

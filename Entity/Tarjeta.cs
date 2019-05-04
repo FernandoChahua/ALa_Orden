@@ -13,7 +13,7 @@ namespace Entity
         public int IdTarjeta { get; set; }
 
         [Required(ErrorMessage = "Porfavor seleccione un cliente")]
-        public Cliente Cliente { get; set; }
+        public Usuario Usuario { get; set; }
 
         [Required(ErrorMessage = "Porfavor ingrese su numero de cuenta")]
         [DisplayName("Nro. de Cuenta")]

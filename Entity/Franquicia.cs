@@ -19,7 +19,7 @@ namespace Entity
         [DisplayName("Direccion URL")]
         public string Url { get; set; }
 
-
+        public string Logo { get; set; }
         public List<Sede> Sedes { get; set; }
         public List<ProductoFranquicia> ProductoFranquicias { get; set; }
 

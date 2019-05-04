@@ -15,6 +15,6 @@ namespace Entity
         [DisplayName("Nombre Marca")]
         public string Nombre { get; set; }
 
-        private List<Producto> Productos { get; set; }
+        public List<Producto> Productos { get; set; }
     }
 }

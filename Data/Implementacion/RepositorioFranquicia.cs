@@ -16,12 +16,14 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
                 {
-                    conn.Open();
-                    string query = "DELETE FROM Franquicia WHERE idFranquicia=" + id;
-                    var cmd = new SqlCommand(query, conn);
-                    cmd.ExecuteNonQuery();
+                    conexion.Open();
+
+                    var query = new SqlCommand("delete from Franquicia where idFranquicia = " + id, conexion);
+
+                    query.ExecuteNonQuery();
+
                     rpta = true;
                 }
             }
@@ -39,20 +41,28 @@ namespace Data.Implementacion
 
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
                 {
-                    conn.Open();
-
-                    string query = "SELECT * FROM Franquicia";
-                    var cmd = new SqlCommand(query, conn);
-                    var dr = cmd.ExecuteReader();
-                    while (dr.Read())
+                    var query = new SqlCommand("select f.idFranquicia, f.nombre as NombreFranquicia,f.url as UrlFranquicia,f.logo as LogoFranquicia from Franquicia f", conexion);
+                    using (var dr = query.ExecuteReader())
                     {
-                        var franquicia = new Franquicia();
-                        franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"].ToString());
-                        franquicia.Nombre = dr["nombre"].ToString();
+                        while (dr.Read())
+                        {
+                            var franquicia = new Franquicia();
 
-                        franquicias.Add(franquicia);
+                            franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"]);
+                            franquicia.Nombre = dr["NombreFranquicia"].ToString();
+                            franquicia.Url = dr["UrlFranquicia"].ToString();
+                            franquicia.Logo = dr["LogoFranquicia"].ToString();
+
+                            IRepositorioSede repositorioSede = new RepositorioSede();
+                            franquicia.Sedes = repositorioSede.GetByFranquicia(franquicia.IdFranquicia);
+
+                            IRepositorioProductoFranquicia repositorioProductoFranquicia = new RepositorioProductoFranquicia();
+                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.GetByFranquicia(franquicia.IdFranquicia);
+
+                            franquicias.Add(franquicia);
+                        }
                     }
                 }
             }
@@ -64,24 +74,34 @@ namespace Data.Implementacion
             return franquicias;
         }
 
-        public Franquicia GetById(int? id)
+        public Franquicia FindById(int? id)
         {
             Franquicia franquicia = null;
 
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
                 {
-                    conn.Open();
-
-                    string query = "SELECT * FROM Franquicia";
-                    var cmd = new SqlCommand(query, conn);
-                    var dr = cmd.ExecuteReader();
-                    while (dr.Read())
+                    conexion.Open();
+                    var query = new SqlCommand("select f.idFranquicia, f.nombre as NombreFranquicia,f.url as UrlFranquicia,f.logo as LogoFranquicia from Franquicia f", conexion);
+                    using (var dr = query.ExecuteReader())
                     {
-                        franquicia = new Franquicia();
-                        franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"].ToString());
-                        franquicia.Nombre = dr["nombre"].ToString();
+                        while (dr.Read())
+                        {
+                            franquicia = new Franquicia();
+
+                            franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"]);
+                            franquicia.Nombre = dr["NombreFranquicia"].ToString();
+                            franquicia.Url = dr["UrlFranquicia"].ToString();
+                            franquicia.Logo = dr["LogoFranquicia"].ToString();
+
+                            IRepositorioSede repositorioSede = new RepositorioSede();
+                            franquicia.Sedes = repositorioSede.GetByFranquicia(franquicia.IdFranquicia);
+
+                            IRepositorioProductoFranquicia repositorioProductoFranquicia = new RepositorioProductoFranquicia();
+                            franquicia.ProductoFranquicias = repositorioProductoFranquicia.GetByFranquicia(franquicia.IdFranquicia);
+
+                        }
                     }
                 }
             }
@@ -97,13 +117,15 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
                 {
-                    conn.Open();
-                    string query = "INSERT INTO Franquicia VALUES (@nombre)";
-                    var cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@nombre", f.Nombre);
-                    cmd.ExecuteNonQuery();
+                    conexion.Open();
+                    var query = new SqlCommand("insert into Franquicia values(@nombre,@url,@logo)", conexion);
+                    query.Parameters.AddWithValue("@nombre",f.Nombre);
+                    query.Parameters.AddWithValue("@url", f.Url);
+                    query.Parameters.AddWithValue("@logo", f.Logo);
+
+                    query.ExecuteNonQuery();
                     rpta = true;
                 }
             }
@@ -120,13 +142,15 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
                 {
-                    conn.Open();
-                    string query = "UPDATE Franquicia SET nombre = @nombre WHERE idFranquicia=" + f.IdFranquicia;
-                    var cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@nombre", f.Nombre);
-                    cmd.ExecuteNonQuery();
+                    conexion.Open();
+                    var query = new SqlCommand("update Franquicia set nombre = @nombre , url = @url, logo = @logo where idFranquicia = "+f.IdFranquicia, conexion);
+                    query.Parameters.AddWithValue("@nombre", f.Nombre);
+                    query.Parameters.AddWithValue("@url", f.Url);
+                    query.Parameters.AddWithValue("@logo", f.Logo);
+
+                    query.ExecuteNonQuery();
                     rpta = true;
                 }
             }

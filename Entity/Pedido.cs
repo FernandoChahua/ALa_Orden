@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+
 namespace Entity
 {
     public class Pedido
@@ -13,27 +14,28 @@ namespace Entity
 
         // public Usuario usuario;  iria usuario?
 
-       
+        public Usuario Usuario { get; set; }
         public Sede Sede { get; set; }
 
         [Required(ErrorMessage = "Por favor seleccione el estado")]
         [DisplayName("Estado")]
-        private string Estado { get; set; }
+        public string Estado { get; set; }
 
 
-        private DateTime Fecha { get; set; }
+        public string Fecha { get; set; }
 
 
-        private string Direccion;
+        public string Direccion;
 
-        public int nroTransaccion;
+        public int NroTransaccion;
 
         //public Descuento SubTotal{get;set;} falta quitarle  {}
 
-    public double PrecioEnvio { get; set; }
+        public double SubTotal { get; set; }
+        public double PrecioEnvio { get; set; }
 
-    public double Descuento { get; set; }
+        public double Descuento { get; set; }
 
-    public List<DetallePedido> DetallesPedidos { get; set; }
+        public List<DetallePedido> DetallesPedidos { get; set; }
     }
 }

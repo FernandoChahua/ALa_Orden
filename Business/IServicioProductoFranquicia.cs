@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity;
 
-namespace Data
+namespace Business
 {
-    public interface IRepositorioSede : IRepositorioCRUD<Sede>
+    public interface IServicioProductoFranquicia : IServicioCRUD<ProductoFranquicia>
     {
-        List<Sede> GetByFranquicia(int idFranquicia);
     }
 }

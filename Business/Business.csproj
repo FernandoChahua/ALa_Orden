@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D14B956-FBBF-4EE5-86C5-9CC0C41F0581}</ProjectGuid>
+    <ProjectGuid>{E64CAE85-F362-43E8-95B9-CDA29A30A345}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Business</RootNamespace>
@@ -41,6 +41,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementacion\ServicioCategoria.cs" />
+    <Compile Include="Implementacion\ServicioDetallePedido.cs" />
+    <Compile Include="Implementacion\ServicioDireccion.cs" />
+    <Compile Include="Implementacion\ServicioFranquicia.cs" />
+    <Compile Include="Implementacion\ServicioMarca.cs" />
+    <Compile Include="Implementacion\ServicioPedido.cs" />
+    <Compile Include="Implementacion\ServicioProducto.cs" />
+    <Compile Include="Implementacion\ServicioProductoFranquicia.cs" />
+    <Compile Include="Implementacion\ServicioSede.cs" />
+    <Compile Include="Implementacion\ServicioTarjeta.cs" />
+    <Compile Include="Implementacion\ServicioUsuario.cs" />
+    <Compile Include="IServicioCategoria.cs" />
+    <Compile Include="IServicioCRUD.cs" />
+    <Compile Include="IServicioDetallePedido.cs" />
+    <Compile Include="IServicioDireccion.cs" />
+    <Compile Include="IServicioFranquicia.cs" />
+    <Compile Include="IServicioMarca.cs" />
+    <Compile Include="IServicioPedido.cs" />
+    <Compile Include="IServicioProducto.cs" />
+    <Compile Include="IServicioProductoFranquicia.cs" />
+    <Compile Include="IServicioSede.cs" />
+    <Compile Include="IServicioTarjeta.cs" />
+    <Compile Include="IServicioUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,9 +75,6 @@
       <Project>{fd58331c-72cf-42a4-b0e6-054faaf7a79e}</Project>
       <Name>Entity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementacion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

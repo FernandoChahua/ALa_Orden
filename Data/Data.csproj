@@ -42,7 +42,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementacion\RepositorioCategoria.cs" />
+    <Compile Include="Implementacion\RepositorioDireccion.cs" />
+    <Compile Include="Implementacion\RepositorioUsuario.cs" />
+    <Compile Include="Implementacion\RepositorioDetallePedido.cs" />
+    <Compile Include="Implementacion\RepositorioFranquicia.cs" />
+    <Compile Include="Implementacion\RepositorioMarca.cs" />
+    <Compile Include="Implementacion\RepositorioPedido.cs" />
+    <Compile Include="Implementacion\RepositorioProducto.cs" />
+    <Compile Include="Implementacion\RepositorioProductoFranquicia.cs" />
+    <Compile Include="Implementacion\RepositorioSede.cs" />
+    <Compile Include="Implementacion\RepositorioTarjeta.cs" />
+    <Compile Include="IRepositorioCategoria.cs" />
+    <Compile Include="IRepositorioDireccion.cs" />
+    <Compile Include="IRepositorioUsuario.cs" />
     <Compile Include="IRepositorioCRUD.cs" />
+    <Compile Include="IRepositorioDetallePedido.cs" />
+    <Compile Include="IRepositorioFranquicia.cs" />
+    <Compile Include="IRepositorioMarca.cs" />
+    <Compile Include="IRepositorioPedido.cs" />
+    <Compile Include="IRepositorioProducto.cs" />
+    <Compile Include="IRepositorioProductoFranquicia.cs" />
+    <Compile Include="IRepositorioSede.cs" />
+    <Compile Include="IRepositorioTarjeta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,8 +73,6 @@
       <Name>Entity</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementacion\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

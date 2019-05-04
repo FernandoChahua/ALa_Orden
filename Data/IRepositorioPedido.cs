@@ -9,6 +9,6 @@ namespace Data
 {
     public interface IRepositorioPedido : IRepositorioCRUD<Pedido>
     {
-        List<Pedido> GetByCliente(int idCliente);
+        List<Pedido> GetByUsuario(int idUsuario);
     }
 }

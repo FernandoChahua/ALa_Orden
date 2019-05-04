@@ -23,9 +23,9 @@ namespace Business.Implementacion
             return repositorioSede.GetAll();
         }
 
-        public Sede GetById(int? id)
+        public Sede FindById(int? id)
         {
-            return repositorioSede.GetById(id);
+            return repositorioSede.FindById(id);
         }
 
         public bool Insert(Sede s)

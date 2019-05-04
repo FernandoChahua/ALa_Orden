@@ -11,7 +11,7 @@ namespace Business
         bool Insert(T t);
         bool Update(T t);
         bool Delete(int id);
-        T GetById(int? id);
+        T FindById(int? id);
         List<T> GetAll();
     }
 }

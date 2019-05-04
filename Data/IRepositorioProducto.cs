@@ -9,6 +9,7 @@ namespace Data
 {
     public interface IRepositorioProducto : IRepositorioCRUD<Producto>
     {
-        List<Producto> GetByFranquicia(int idFranquicia);
+        List<Producto> GetByCategoria(int idCategoria);
+        List<Producto> GetByMarca(int idMarca);
     }
 }

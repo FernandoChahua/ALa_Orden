@@ -23,9 +23,9 @@ namespace Business.Implementacion
             return repositorioProducto.GetAll();
         }
 
-        public Producto GetById(int? id)
+        public Producto FindById(int? id)
         {
-            return repositorioProducto.GetById(id);
+            return repositorioProducto.FindById(id);
         }
 
         public bool Insert(Producto t)

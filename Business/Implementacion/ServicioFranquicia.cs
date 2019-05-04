@@ -28,9 +28,9 @@ namespace Business.Implementacion
             return repositorioFranquicia.Delete(id);
         }
 
-        public Franquicia GetById(int? id)
+        public Franquicia FindById(int? id)
         {
-            return repositorioFranquicia.GetById(id);
+            return repositorioFranquicia.FindById(id);
         }
 
         public List<Franquicia> GetAll()

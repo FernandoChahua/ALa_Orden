@@ -44,9 +44,13 @@ namespace Business.Implementacion
         {
             return repositorioDetallePedido.GetByIdPedido(idPedido);
         }
-        public DetallePedido GetById(DetallePedido dp)
+        public DetallePedido FindById(DetallePedido dp)
         {
-            return repositorioDetallePedido.GetById(dp);
+            return repositorioDetallePedido.FindById(dp);
+        }
+        public DetallePedido FindById(int? id)
+        {
+            return null;
         }
     }
 }

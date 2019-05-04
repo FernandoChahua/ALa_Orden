@@ -7,7 +7,7 @@ using Entity;
 
 namespace Data
 {
-    public interface IRepositorioCliente : IRepositorioCRUD<Cliente>
+    public interface IRepositorioUsuario : IRepositorioCRUD<Usuario>
     {
     }
 }

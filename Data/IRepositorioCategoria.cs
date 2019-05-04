@@ -7,8 +7,7 @@ using Entity;
 
 namespace Data
 {
-    public interface IRepositorioSede : IRepositorioCRUD<Sede>
+    public interface IRepositorioCategoria:IRepositorioCRUD<Categoria>
     {
-        List<Sede> GetByFranquicia(int idFranquicia);
     }
 }

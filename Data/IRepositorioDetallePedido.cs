@@ -11,6 +11,6 @@ namespace Data
     {
         bool Delete(DetallePedido t);
         List<DetallePedido> GetByIdPedido(int idPedido);
-        DetallePedido GetById(DetallePedido dp);
+        DetallePedido FindById(DetallePedido dp);
     }
 }

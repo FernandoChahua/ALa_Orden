@@ -43,7 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
-    <Compile Include="Cliente.cs" />
+    <Compile Include="Direccion.cs" />
+    <Compile Include="Usuario.cs" />
     <Compile Include="DetallePedido.cs" />
     <Compile Include="Direccion.cs" />
     <Compile Include="Franquicia.cs" />

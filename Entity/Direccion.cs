@@ -9,9 +9,10 @@ namespace Entity
     public class Direccion
     {
         public int IdDireccion { get; set; }
-        public Cliente Cliente { get; set; }
+        public int IdUsuario { get; set; }
+        public string Longitud { get; set; }
+        public string Latitud { get; set; }
         public string Descripcion { get; set; }
-        public double Latitud { get; set; }
-        public double Longitud { get; set; }
+
     }
 }

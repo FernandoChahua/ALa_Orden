@@ -68,17 +68,25 @@ namespace Data.Implementacion
                 using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conn.Open();
-                    var query = "SELECT * FROM Usuario";
+                    var query = "SELECT * from usuario";
                     var cmd = new SqlCommand(query, conn);
                     using (var dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
                             var obj = new Usuario();
-                            obj.IdUsuario = Int32.Parse(dr["idUsuario"].ToString());
+
+                            obj.IdUsuario = Convert.ToInt32(dr["idUsuario"].ToString());
                             obj.Apodo = dr["apodo"].ToString();
                             obj.Contrasena = dr["contrasena"].ToString();
                             obj.Email = dr["email"].ToString();
+                            var direcciones = new List<Direccion>();
+                            IRepositorioDireccion repositorioDireccion = new RepositorioDireccion();
+
+                            direcciones = repositorioDireccion.FindByUsuario(obj.IdUsuario);
+
+
+
 
                             usuarios.Add(obj);
                         }
@@ -109,10 +117,14 @@ namespace Data.Implementacion
                         {
                             usuario = new Usuario();
 
-                            usuario.IdUsuario = Int32.Parse(dr["idUsuario"].ToString());
+                            usuario.IdUsuario = Convert.ToInt32(dr["idUsuario"].ToString());
                             usuario.Apodo = dr["apodo"].ToString();
                             usuario.Contrasena = dr["contrasena"].ToString();
                             usuario.Email = dr["email"].ToString();
+                            var direcciones = new List<Direccion>();
+                            IRepositorioDireccion repositorioDireccion = new RepositorioDireccion();
+
+                            direcciones = repositorioDireccion.FindByUsuario(usuario.IdUsuario);
                         }
                     }
                 }

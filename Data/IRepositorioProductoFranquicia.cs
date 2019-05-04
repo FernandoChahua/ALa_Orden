@@ -9,6 +9,6 @@ namespace Data
     public interface IRepositorioProductoFranquicia : IRepositorioCRUD<ProductoFranquicia>
     {
         bool Delete(int idProducto, int idFranquicia);
-        List<ProductoFranquicia> GetByFranquicia(int idFranquicia);
+        List<ProductoFranquicia> FindByFranquicia(int idFranquicia);
     }
 }

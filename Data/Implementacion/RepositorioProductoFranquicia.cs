@@ -188,7 +188,7 @@ namespace Data.Implementacion
             }
             return rpta;
         }
-        public List<ProductoFranquicia> GetByFranquicia(int idFranquicia)
+        public List<ProductoFranquicia> FindByFranquicia(int idFranquicia)
         {
             var productosFranquicias = new List<ProductoFranquicia>();
 

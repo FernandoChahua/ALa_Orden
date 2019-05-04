@@ -9,7 +9,44 @@ using Entity;
 
 namespace Business.Implementacion
 {
-    class ServicioProductoFranquicia
+    public class ServicioProductoFranquicia : IServicioProductoFranquicia
     {
+        private IRepositorioProductoFranquicia repositorioProductoFranquicia = new RepositorioProductoFranquicia();
+
+        public bool Insert(ProductoFranquicia t)
+        {
+
+            return repositorioProductoFranquicia.Insert(t);
+        }
+
+        public List<ProductoFranquicia> GetAll()
+        {
+            return repositorioProductoFranquicia.GetAll();
+        }
+
+        public ProductoFranquicia FindById(int? id)
+        {
+            return repositorioProductoFranquicia.FindById(id);
+        }
+
+        public bool Update(ProductoFranquicia t)
+        {
+            return repositorioProductoFranquicia.Update(t);
+        }
+
+        public bool Delete(int id)
+        {
+            return repositorioProductoFranquicia.Delete(id);
+        }
+
+        public List<ProductoFranquicia> FindByFranquicia(int idFranquicia)
+        {
+            return repositorioProductoFranquicia.FindByFranquicia(idFranquicia);
+        }
+        public bool Delete(int idProducto, int idFranquicia)
+        {
+            return repositorioProductoFranquicia.Delete(idProducto,idFranquicia);
+        }
+        
     }
 }

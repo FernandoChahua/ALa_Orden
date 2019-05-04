@@ -43,7 +43,33 @@ namespace Presentation.Controllers
             }
             return View();
         }
+
+        public ActionResult Edit(int? idP, int? idF)
+        {
+            ProductoFranquicia pf = new ProductoFranquicia
+            {
+                Producto = new Producto { IdProducto = idP.Value },
+                Franquicia = new Franquicia { IdFranquicia = idF.Value }
+            };
+            ViewBag.franquicias = servicioFranquicia.GetAll();
+            ViewBag.productos = servicioProducto.GetAll();
+            pf = servicioProductoFranquicia.FindById(pf);
+
+            return View(pf);
+        }
+
         [HttpPost]
+        public ActionResult Edit(ProductoFranquicia productoFranquicia)
+        {
+            ViewBag.franquicias = servicioFranquicia.GetAll();
+            ViewBag.productos = servicioProducto.GetAll();
+            if (servicioProductoFranquicia.Insert(productoFranquicia))
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         public ActionResult Delete(int? idP, int? idF)
         {
             servicioProductoFranquicia.Delete(idP.Value, idF.Value);

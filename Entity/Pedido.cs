@@ -21,19 +21,22 @@ namespace Entity
         [DisplayName("Estado")]
         public string Estado { get; set; }
 
-
+        [Required(ErrorMessage = "Por favor ingrese una fecha válido")]
         public string Fecha { get; set; }
 
+        [Required(ErrorMessage = "Por favor ingrese una direccion válida")]
+        public string Direccion;
 
-        public string Direccion { get; set; }
-
-        public int NroTransaccion { get; set; }
+        [Required(ErrorMessage = "Por favor ingrese un número de transacción válida")]
+        public int NroTransaccion;
 
         //public Descuento SubTotal{get;set;} falta quitarle  {}
 
+        [Required(ErrorMessage = "Por favor ingrese un sub total válido")]
         public double SubTotal { get; set; }
+        [Required(ErrorMessage = "Por favor ingrese un precio de envío válido")]
         public double PrecioEnvio { get; set; }
-
+        [Required(ErrorMessage = "Por favor ingrese un monto de descuento válido")]
         public double Descuento { get; set; }
 
         public List<DetallePedido> DetallesPedidos { get; set; }

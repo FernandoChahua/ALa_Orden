@@ -41,7 +41,8 @@
             @Html.DisplayFor(modelItem => item.CodRef)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { p = item.Producto.IdProducto, pr = item.Franquicia.IdFranquicia })
+            @Html.ActionLink("Edit", "Edit", routeValues: new { idP = item.Producto.IdProducto, idF = item.Franquicia.IdFranquicia }) |
+            @Html.ActionLink("Delete", "Delete", routeValues: new { idP = item.Producto.IdProducto, idF = item.Franquicia.IdFranquicia })
         </td>
     </tr>
     }

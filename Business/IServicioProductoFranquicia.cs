@@ -10,5 +10,7 @@ namespace Business
     public interface IServicioProductoFranquicia : IServicioCRUD<ProductoFranquicia>
     {
         bool Delete(int idProducto, int idFranquicia);
+
+        ProductoFranquicia FindById(ProductoFranquicia pf);
     }
 }

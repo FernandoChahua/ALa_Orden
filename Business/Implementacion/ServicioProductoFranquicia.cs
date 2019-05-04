@@ -48,5 +48,9 @@ namespace Business.Implementacion
             return repositorioProductoFranquicia.Delete(idProducto, idFranquicia);
         }
 
+        public ProductoFranquicia FindById(ProductoFranquicia pf)
+        {
+            return repositorioProductoFranquicia.FindById(pf);
+        }
     }
 }

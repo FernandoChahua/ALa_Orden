@@ -25,10 +25,10 @@ namespace Entity
         public string Fecha { get; set; }
 
         [Required(ErrorMessage = "Por favor ingrese una direccion válida")]
-        public string Direccion;
+        public string Direccion { get; set; }
 
         [Required(ErrorMessage = "Por favor ingrese un número de transacción válida")]
-        public int NroTransaccion;
+        public int NroTransaccion { get; set; }
 
         //public Descuento SubTotal{get;set;} falta quitarle  {}
 

@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementacion\ServicioCliente.cs" />
+    <Compile Include="Implementacion\ServicioUsuario.cs" />
     <Compile Include="Implementacion\ServicioDetallePedido.cs" />
     <Compile Include="Implementacion\ServicioFranquicia.cs" />
     <Compile Include="Implementacion\ServicioPedido.cs" />

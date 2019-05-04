@@ -25,7 +25,7 @@ namespace Business.Implementacion
 
         public Pedido GetById(int? id)
         {
-            return repositorioPedido.GetById(id);
+            return repositorioPedido.FindById(id);
         }
 
         public bool Insert(Pedido p)
@@ -40,7 +40,7 @@ namespace Business.Implementacion
 
         public List<Pedido> GetByCliente(int idCliente)
         {
-            return repositorioPedido.GetByCliente(idCliente);
+            return repositorioPedido.GetByUsuario(idCliente);
         }
     }
 }

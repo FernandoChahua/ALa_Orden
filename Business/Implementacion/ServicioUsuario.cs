@@ -9,33 +9,33 @@ using Data.Implementacion;
 
 namespace Business.Implementacion
 {
-    public class ServicioCliente : IServicioUsuario
+    public class ServicioUsuario : IServicioUsuario
     {
-        private IRepositorioUsuario repositorioCliente = new RepositorioUsuario();
+        private IRepositorioUsuario repositorioUsuario = new RepositorioUsuario();
 
         public bool Delete(int id)
         {
-            return repositorioCliente.Delete(id);
+            return repositorioUsuario.Delete(id);
         }
 
         public bool Insert(Usuario c)
         {
-            return repositorioCliente.Insert(c);
+            return repositorioUsuario.Insert(c);
         }
 
         public List<Usuario> GetAll()
         {
-            return repositorioCliente.GetAll();
+            return repositorioUsuario.GetAll();
         }
 
-        public Usuario GetById(int? id)
+        public Usuario FindById(int? id)
         {
-            return repositorioCliente.GetById(id);
+            return repositorioUsuario.FindById(id);
         }
 
         public bool Update(Usuario c)
         {
-            return repositorioCliente.Update(c);
+            return repositorioUsuario.Update(c);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Business.Implementacion
 
         public Franquicia GetById(int? id)
         {
-            return repositorioFranquicia.GetById(id);
+            return repositorioFranquicia.FindById(id);
         }
 
         public List<Franquicia> GetAll()

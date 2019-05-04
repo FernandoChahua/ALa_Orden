@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementacion\RepositorioCliente.cs" />
+    <Compile Include="Implementacion\RepositorioDetallePedido.cs" />
+    <Compile Include="Implementacion\RepositorioFranquicia.cs" />
+    <Compile Include="Implementacion\RepositorioPedido.cs" />
+    <Compile Include="Implementacion\RepositorioProducto.cs" />
+    <Compile Include="Implementacion\RepositorioSede.cs" />
+    <Compile Include="Implementacion\RepositorioTarjeta.cs" />
     <Compile Include="IRepositorioCliente.cs" />
     <Compile Include="IRepositorioCRUD.cs" />
     <Compile Include="IRepositorioDetallePedido.cs" />
@@ -58,8 +65,6 @@
       <Name>Entity</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementacion\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

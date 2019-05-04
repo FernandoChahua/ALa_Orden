@@ -25,9 +25,9 @@ namespace Entity
         public string Fecha { get; set; }
 
 
-        public string Direccion;
+        public string Direccion { get; set; }
 
-        public int NroTransaccion;
+        public int NroTransaccion { get; set; }
 
         //public Descuento SubTotal{get;set;} falta quitarle  {}
 

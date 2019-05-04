@@ -42,17 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementacion\RepositorioCategoria.cs" />
     <Compile Include="Implementacion\RepositorioCliente.cs" />
     <Compile Include="Implementacion\RepositorioDetallePedido.cs" />
     <Compile Include="Implementacion\RepositorioFranquicia.cs" />
+    <Compile Include="Implementacion\RepositorioMarca.cs" />
     <Compile Include="Implementacion\RepositorioPedido.cs" />
     <Compile Include="Implementacion\RepositorioProducto.cs" />
     <Compile Include="Implementacion\RepositorioSede.cs" />
     <Compile Include="Implementacion\RepositorioTarjeta.cs" />
+    <Compile Include="IRepositorioCategoria.cs" />
     <Compile Include="IRepositorioCliente.cs" />
     <Compile Include="IRepositorioCRUD.cs" />
     <Compile Include="IRepositorioDetallePedido.cs" />
     <Compile Include="IRepositorioFranquicia.cs" />
+    <Compile Include="IRepositorioMarca.cs" />
     <Compile Include="IRepositorioPedido.cs" />
     <Compile Include="IRepositorioProducto.cs" />
     <Compile Include="IRepositorioSede.cs" />

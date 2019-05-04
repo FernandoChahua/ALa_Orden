@@ -188,8 +188,7 @@ namespace Data.Implementacion
             }
             catch (Exception ex)
             {
-
-                throw;
+                rpta = false;
             }
             return rpta;
         }

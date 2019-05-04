@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Entity.DetallePedido>
+@{
+    ViewBag.Title = "Carrito";
+}
+
+<h2>Carrito</h2>
+
+<p>
+    @Html.ActionLink("Regresar Lista", "Index")
+</p>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("+", "VariarCantidad", new { id = item.Producto.IdProducto, flag = 0 })
+            @Html.DisplayFor(modelItem => item.Cantidad)
+            @Html.ActionLink("-", "VariarCantidad", new { id = item.Producto.IdProducto, flag = 1 })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "EliminarCarrito", new { id = item.Producto.IdProducto })
+        </td>
+    </tr>
+    }
+</table>
+
+

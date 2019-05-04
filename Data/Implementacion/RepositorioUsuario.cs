@@ -44,7 +44,7 @@ namespace Data.Implementacion
                     conn.Open();
                     var query = "insert into cliente (usuario,contrasena,email) values (@usuario,@contrasena,@email)";
                     var cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@usuario", c.Usuario);
+                    cmd.Parameters.AddWithValue("@usuario", c.Apodo);
                     cmd.Parameters.AddWithValue("@contrasena", c.Contrasena);
                     cmd.Parameters.AddWithValue("@email", c.Email);
 
@@ -62,7 +62,7 @@ namespace Data.Implementacion
 
         public List<Usuario> GetAll()
         {
-            var clientes = new List<Usuario>();
+            var usuarios = new List<Usuario>();
             try
             {
                 using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
@@ -70,17 +70,17 @@ namespace Data.Implementacion
                     conn.Open();
                     var query = "SELECT * FROM Cliente";
                     var cmd = new SqlCommand(query, conn);
-                    using (var dr = cmd.ExecuteReader()){
+                    using (var dr = cmd.ExecuteReader())
+                    {
                         while (dr.Read())
                         {
                             var obj = new Usuario();
-
-                            obj.IdCliente = Int32.Parse(dr["idCliente"].ToString());
-                            obj.Usuario = dr["usuario"].ToString();
+                            obj.IdUsuario = Int32.Parse(dr["idUsuario"].ToString());
+                            obj.Apodo = dr["apodo"].ToString();
                             obj.Contrasena = dr["contrasena"].ToString();
                             obj.Email = dr["email"].ToString();
 
-                            clientes.Add(obj);
+                            usuarios.Add(obj);
                         }
                     }
                 }
@@ -90,12 +90,12 @@ namespace Data.Implementacion
 
                 throw;
             }
-            return clientes;
+            return usuarios;
         }
 
-        public Usuario GetById(int? id)
+        public Usuario FindById(int? id)
         {
-            Usuario cliente = null;
+            Usuario usuario = null;
             try
             {
                 using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
@@ -107,12 +107,12 @@ namespace Data.Implementacion
                     {
                         while (dr.Read())
                         {
-                            cliente = new Usuario();
+                            usuario = new Usuario();
 
-                            cliente.IdCliente = Int32.Parse(dr["idCliente"].ToString());
-                            cliente.Usuario = dr["usuario"].ToString();
-                            cliente.Contrasena = dr["contrasena"].ToString();
-                            cliente.Email = dr["email"].ToString();
+                            usuario.IdUsuario = Int32.Parse(dr["idCliente"].ToString());
+                            usuario.Apodo = dr["usuario"].ToString();
+                            usuario.Contrasena = dr["contrasena"].ToString();
+                            usuario.Email = dr["email"].ToString();
                         }
                     }
                 }
@@ -122,7 +122,7 @@ namespace Data.Implementacion
 
                 throw;
             }
-            return cliente;
+            return usuario;
         }
 
         public bool Update(Usuario c)
@@ -135,10 +135,10 @@ namespace Data.Implementacion
                     conn.Open();
                     var query = "UPDATE cliente SET usuario = @usuario, contrasena = @contrasena, email = @email WHERE idCliente = @id";
                     var cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@usuario", c.Usuario);
+                    cmd.Parameters.AddWithValue("@usuario", c.Apodo);
                     cmd.Parameters.AddWithValue("@contrasena", c.Contrasena);
                     cmd.Parameters.AddWithValue("@email", c.Email);
-                    cmd.Parameters.AddWithValue("@id", c.IdCliente);
+                    cmd.Parameters.AddWithValue("@id", c.IdUsuario);
 
                     cmd.ExecuteNonQuery();
 

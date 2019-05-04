@@ -34,7 +34,7 @@ namespace Data.Implementacion
             }
             return rpta;
         }
-        public bool Delete(int idProducto,int idFranquicia)
+        public bool Delete(int idProducto, int idFranquicia)
         {
             bool rpta = false;
             try
@@ -43,7 +43,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("delete from Producto_Franquicia where idProducto = " + idProducto+" and idFranquicia = "+idFranquicia, conexion);
+                    var query = new SqlCommand("delete from Producto_Franquicia where idProducto = " + idProducto + " and idFranquicia = " + idFranquicia, conexion);
 
                     query.ExecuteNonQuery();
 
@@ -109,7 +109,7 @@ namespace Data.Implementacion
 
                             productoFranquicia.CodRef = dr["codReferencia"].ToString();
                             productoFranquicia.Producto = producto;
-                            productoFranquicia.Franquicia = franquicia;              
+                            productoFranquicia.Franquicia = franquicia;
 
                             productosFranquicias.Add(productoFranquicia);
                         }
@@ -130,7 +130,7 @@ namespace Data.Implementacion
 
             try
             {
-              
+
             }
             catch (Exception ex)
             {
@@ -148,7 +148,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
                     var query = new SqlCommand("insert into Producto_Franquicia values(@idProducto,@idFranquicia,@CodRef)", conexion);
-                    query.Parameters.AddWithValue("@idProducto",pf.Producto.IdProducto);
+                    query.Parameters.AddWithValue("@idProducto", pf.Producto.IdProducto);
                     query.Parameters.AddWithValue("@CodRef", pf.CodRef);
                     query.Parameters.AddWithValue("@idFranquicia", pf.Franquicia.IdFranquicia);
 
@@ -188,7 +188,7 @@ namespace Data.Implementacion
             }
             return rpta;
         }
-        public List<ProductoFranquicia> FindByFranquicia(int idFranquicia)
+        public List<ProductoFranquicia> GetByFranquicia(int idFranquicia)
         {
             var productosFranquicias = new List<ProductoFranquicia>();
 

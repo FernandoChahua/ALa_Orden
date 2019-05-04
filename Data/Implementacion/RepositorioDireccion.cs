@@ -110,8 +110,8 @@ namespace Data.Implementacion
                             direccion.IdDireccion = Convert.ToInt32(dr["idDireccion"]);
                             direccion.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                             direccion.Descripcion = dr["descripcion"].ToString();
-                            direccion.Latitud = dr["latitud"].ToString();
-                            direccion.Longitud = dr["longitud"].ToString();
+                            direccion.Latitud = Convert.ToDouble(dr["latitud"].ToString());
+                            direccion.Longitud = Convert.ToDouble(dr["longitud"].ToString());
 
 
                             direcciones.Add(direccion);
@@ -150,8 +150,8 @@ namespace Data.Implementacion
                             direccion.IdDireccion = Convert.ToInt32(dr["idDireccion"]);
                             direccion.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                             direccion.Descripcion = dr["descripcion"].ToString();
-                            direccion.Latitud = dr["latitud"].ToString();
-                            direccion.Longitud = dr["longitud"].ToString();
+                            direccion.Latitud = Convert.ToDouble(dr["latitud"].ToString());
+                            direccion.Longitud = Convert.ToDouble(dr["longitud"].ToString());
                         }
                     }
 
@@ -184,8 +184,9 @@ namespace Data.Implementacion
                             direccion.IdDireccion = Convert.ToInt32(dr["idDireccion"]);
                             direccion.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                             direccion.Descripcion = dr["descripcion"].ToString();
-                            direccion.Latitud = dr["latitud"].ToString();
-                            direccion.Longitud = dr["longitud"].ToString();
+
+                            direccion.Latitud = Convert.ToDouble(dr["latitud"].ToString());
+                            direccion.Longitud = Convert.ToDouble(dr["longitud"].ToString());
 
 
                             direcciones.Add(direccion);

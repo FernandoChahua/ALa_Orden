@@ -8,6 +8,6 @@ namespace Data
 {
     public interface IRepositorioDireccion : IRepositorioCRUD<Direccion>
     {
-        List<Direccion> GetByUsuario(int idUsuario);
+        List<Direccion> FindByUsuario(int idUsuario);
     }
 }

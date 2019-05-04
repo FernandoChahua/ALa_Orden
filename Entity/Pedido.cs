@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+
 namespace Entity
 {
     public class Pedido
@@ -21,7 +22,7 @@ namespace Entity
         public string Estado { get; set; }
 
 
-        public DateTime Fecha { get; set; }
+        public string Fecha { get; set; }
 
 
         public string Direccion;
@@ -33,8 +34,8 @@ namespace Entity
         public double SubTotal { get; set; }
         public double PrecioEnvio { get; set; }
 
-    public double Descuento { get; set; }
+        public double Descuento { get; set; }
 
-    public List<DetallePedido> DetallesPedidos { get; set; }
+        public List<DetallePedido> DetallesPedidos { get; set; }
     }
 }

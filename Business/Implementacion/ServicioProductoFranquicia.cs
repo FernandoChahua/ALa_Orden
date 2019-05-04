@@ -41,12 +41,12 @@ namespace Business.Implementacion
 
         public List<ProductoFranquicia> FindByFranquicia(int idFranquicia)
         {
-            return repositorioProductoFranquicia.FindByFranquicia(idFranquicia);
+            return repositorioProductoFranquicia.GetByFranquicia(idFranquicia);
         }
         public bool Delete(int idProducto, int idFranquicia)
         {
-            return repositorioProductoFranquicia.Delete(idProducto,idFranquicia);
+            return repositorioProductoFranquicia.Delete(idProducto, idFranquicia);
         }
-        
+
     }
 }

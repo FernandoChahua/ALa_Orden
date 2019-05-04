@@ -16,10 +16,10 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conn.Open();
-                    var query = "DELETE FROM Cliente WHERE idCliente = " + id;
+                    var query = "DELETE FROM Usuario WHERE idUsuario = " + id;
                     var cmd = new SqlCommand(query, conn);
 
                     cmd.ExecuteNonQuery();
@@ -39,12 +39,12 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conn.Open();
-                    var query = "insert into cliente (usuario,contrasena,email) values (@usuario,@contrasena,@email)";
+                    var query = "insert into usuario (apodo,contrasena,email) values (@apodo,@contrasena,@email)";
                     var cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@usuario", c.Apodo);
+                    cmd.Parameters.AddWithValue("@apodo", c.Apodo);
                     cmd.Parameters.AddWithValue("@contrasena", c.Contrasena);
                     cmd.Parameters.AddWithValue("@email", c.Email);
 
@@ -65,10 +65,10 @@ namespace Data.Implementacion
             var usuarios = new List<Usuario>();
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conn.Open();
-                    var query = "SELECT * FROM Cliente";
+                    var query = "SELECT * FROM Usuario";
                     var cmd = new SqlCommand(query, conn);
                     using (var dr = cmd.ExecuteReader())
                     {
@@ -98,10 +98,10 @@ namespace Data.Implementacion
             Usuario usuario = null;
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conn.Open();
-                    var query = "SELECT * FROM Cliente where idCliente = " + id;
+                    var query = "SELECT * FROM Usuario where idUsuario = " + id;
                     var cmd = new SqlCommand(query, conn);
                     using (var dr = cmd.ExecuteReader())
                     {
@@ -109,8 +109,8 @@ namespace Data.Implementacion
                         {
                             usuario = new Usuario();
 
-                            usuario.IdUsuario = Int32.Parse(dr["idCliente"].ToString());
-                            usuario.Apodo = dr["usuario"].ToString();
+                            usuario.IdUsuario = Int32.Parse(dr["idUsuario"].ToString());
+                            usuario.Apodo = dr["apodo"].ToString();
                             usuario.Contrasena = dr["contrasena"].ToString();
                             usuario.Email = dr["email"].ToString();
                         }
@@ -130,12 +130,12 @@ namespace Data.Implementacion
             bool rpta = false;
             try
             {
-                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ALaOrden"].ToString()))
+                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ToString()))
                 {
                     conn.Open();
-                    var query = "UPDATE cliente SET usuario = @usuario, contrasena = @contrasena, email = @email WHERE idCliente = @id";
+                    var query = "UPDATE usuario SET usuario = @apodo, contrasena = @contrasena, email = @email WHERE idUsuario = @id";
                     var cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@usuario", c.Apodo);
+                    cmd.Parameters.AddWithValue("@apodo", c.Apodo);
                     cmd.Parameters.AddWithValue("@contrasena", c.Contrasena);
                     cmd.Parameters.AddWithValue("@email", c.Email);
                     cmd.Parameters.AddWithValue("@id", c.IdUsuario);

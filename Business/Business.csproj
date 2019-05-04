@@ -41,18 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementacion\ServicioCategoria.cs" />
     <Compile Include="Implementacion\ServicioDetallePedido.cs" />
+    <Compile Include="Implementacion\ServicioDireccion.cs" />
     <Compile Include="Implementacion\ServicioFranquicia.cs" />
+    <Compile Include="Implementacion\ServicioMarca.cs" />
     <Compile Include="Implementacion\ServicioPedido.cs" />
     <Compile Include="Implementacion\ServicioProducto.cs" />
+    <Compile Include="Implementacion\ServicioProductoFranquicia.cs" />
     <Compile Include="Implementacion\ServicioSede.cs" />
     <Compile Include="Implementacion\ServicioTarjeta.cs" />
     <Compile Include="Implementacion\ServicioUsuario.cs" />
+    <Compile Include="IServicioCategoria.cs" />
     <Compile Include="IServicioCRUD.cs" />
     <Compile Include="IServicioDetallePedido.cs" />
+    <Compile Include="IServicioDireccion.cs" />
     <Compile Include="IServicioFranquicia.cs" />
+    <Compile Include="IServicioMarca.cs" />
     <Compile Include="IServicioPedido.cs" />
     <Compile Include="IServicioProducto.cs" />
+    <Compile Include="IServicioProductoFranquicia.cs" />
     <Compile Include="IServicioSede.cs" />
     <Compile Include="IServicioTarjeta.cs" />
     <Compile Include="IServicioUsuario.cs" />

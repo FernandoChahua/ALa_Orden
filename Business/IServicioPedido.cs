@@ -9,6 +9,6 @@ namespace Business
 {
     public interface IServicioPedido : IServicioCRUD<Pedido>
     {
-        List<Pedido> GetByCliente(int idCliente);
+        List<Pedido> GetByUsuario(int idUsuario);
     }
 }

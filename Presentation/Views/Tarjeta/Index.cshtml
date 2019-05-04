@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Entity.Tarjeta>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<p>
+
+    @Html.ActionLink("Nueva Tarjeta", "Create")
+</p>
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.IdCliente)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NroCuenta)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Titular)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FechaExp)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.IdCliente)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.NroCuenta)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Titular)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaExp)
+        </td>
+
+
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IdTarjeta }) | @Html.ActionLink("Delete", "Delete", new { id = item.IdTarjeta })
+
+        </td>
+
+
+
+    </tr>
+    }
+</table>
+

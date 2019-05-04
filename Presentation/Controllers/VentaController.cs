@@ -16,8 +16,6 @@ namespace Presentation.Controllers
         Usuario usuario = new Usuario();
         IServicioUsuario servicioUsuario = new ServicioUsuario();
 
-
-
         // GET: Venta
         public ActionResult Index()
         {

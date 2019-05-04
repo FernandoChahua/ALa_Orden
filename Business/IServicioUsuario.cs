@@ -7,7 +7,7 @@ using Entity;
 
 namespace Business
 {
-    public interface IServicioCliente : IServicioCRUD<Usuario>
+    public interface IServicioUsuario : IServicioCRUD<Usuario>
     {
     }
 }

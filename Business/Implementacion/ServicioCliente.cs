@@ -9,7 +9,7 @@ using Data.Implementacion;
 
 namespace Business.Implementacion
 {
-    public class ServicioCliente : IServicioCliente
+    public class ServicioCliente : IServicioUsuario
     {
         private IRepositorioUsuario repositorioCliente = new RepositorioUsuario();
 

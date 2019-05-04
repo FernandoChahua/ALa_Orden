@@ -58,6 +58,54 @@ namespace Data.Implementacion
             return rpta;
         }
 
+        public ProductoFranquicia FindById(ProductoFranquicia pf)
+        {
+            ProductoFranquicia productoFranquicia = null;
+            try
+            {
+                using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["alaorden"].ConnectionString))
+                {
+                    conexion.Open();
+                    var query = @"SELECT 
+                                    p_f.*, 
+                                    p.nombre as nomProducto,
+                                    f.nombre as nomFranquicia
+                                FROM Producto_Franquicia p_f
+                                JOIN Producto p ON p_f.idProducto = p.idProducto
+                                JOIN Franquicia f ON p_f.idFranquicia = f.idFranquicia
+                                WHERE p_f.idFranquicia = @idF AND p_f.idProducto = @idProducto = @idP" ;
+                    var cmd = new SqlCommand(query, conexion);
+                    cmd.Parameters.AddWithValue("@idF", pf.Franquicia.IdFranquicia);
+                    cmd.Parameters.AddWithValue("@idP", pf.Producto.IdProducto);
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            productoFranquicia = new ProductoFranquicia();
+                            var producto = new Producto();
+                            var franquicia = new Franquicia();
+
+                            producto.IdProducto = Int32.Parse(dr["idProducto"].ToString());
+                            producto.Nombre = dr["nomProducto"].ToString();
+
+                            franquicia.IdFranquicia = Convert.ToInt32(dr["idFranquicia"].ToString());
+                            franquicia.Nombre = dr["nomFranquicia"].ToString();
+
+                            productoFranquicia.Franquicia = franquicia;
+                            productoFranquicia.Producto = producto;
+
+                            productoFranquicia.CodRef = dr["codReferencia"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return productoFranquicia;
+        }
+
         public List<ProductoFranquicia> GetAll()
         {
             var productosFranquicias = new List<ProductoFranquicia>();

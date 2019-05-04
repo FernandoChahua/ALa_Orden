@@ -10,5 +10,6 @@ namespace Data
     {
         bool Delete(int idProducto, int idFranquicia);
         List<ProductoFranquicia> GetByFranquicia(int idFranquicia);
+        ProductoFranquicia FindById(ProductoFranquicia pf);
     }
 }
